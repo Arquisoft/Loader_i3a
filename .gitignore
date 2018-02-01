@@ -3,7 +3,6 @@
 .metadata
 bin/
 tmp/
-Generated/
 *.tmp
 *.bak
 *.swp
@@ -53,7 +52,3 @@ local.properties
 .recommenders/
 
 .DS_Store
-.idea
-*.iml
-
-*.log
