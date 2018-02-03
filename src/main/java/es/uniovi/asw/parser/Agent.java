@@ -10,6 +10,7 @@ public class Agent {
 	private String location;
 	private String email;
 	private String ID;
+	private String password;
 	private int kind;
 
 	public Agent(String name, String location, String email, String ID, int kind) {
@@ -96,5 +97,15 @@ public class Agent {
 		return "Citizen [name=" + name + ", location=" + location + ",  email=" + email + ", ID=" + ID + ", kind="
 				+ kind + "]";
 	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	
 
 }

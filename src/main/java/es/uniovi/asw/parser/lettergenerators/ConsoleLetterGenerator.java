@@ -11,14 +11,15 @@ public class ConsoleLetterGenerator implements LetterGenerator{
 
 	@Override
 	public void generatePersonalLetter(Agent c) {
-		/*StringBuilder sb = new StringBuilder();
+		StringBuilder sb = new StringBuilder();
 		sb.append("To: "+c.getEmail()+"\n");
 		sb.append("Subject: Login data\n");
-		sb.append("Mr/Mrs "+ c.getName() +" "+ c.getlastName()+",\n\n");
+		sb.append("Mr/Mrs "+ c.getName() +",\n\n");
 		sb.append("Your login data has been generated:\n");
-		sb.append("\tUsername: "+c.getEmail()+"\n");
-		sb.append("\tPassword: "+c.getPassword()+"\n");*/
-		System.out.println(c.getID() +" letter sent.");
+		sb.append("\tUsername: "+c.getID()+"\n");
+		sb.append("\tPassword: "+c.getPassword()+"\n");
+		System.out.println(sb.toString());
+		//System.out.println(c.getID() +" letter sent.");
 	}
 
 }

@@ -11,9 +11,7 @@ import org.apache.poi.xwpf.usermodel.XWPFRun;
 
 public class WordLetterGenerator implements LetterGenerator {
 	
-	/**
-	 * @author Adrian
-	 * 
+	/** 
 	 * Generates a new word document into which it writes
 	 * the data of a given citizen.
 	 */
@@ -30,7 +28,7 @@ public class WordLetterGenerator implements LetterGenerator {
 			XWPFRun runNames = paragraph.createRun();
 			
 			//Add text to the document 
-			runNames.setText("Mr/Mrs " + c.getName() + " " + c.getlastName() +",");
+			runNames.setText("Mr/Mrs " + c.getName() + ",");
 			runNames.addBreak();
 			
 			XWPFRun runLogin = paragraph.createRun();
@@ -38,7 +36,7 @@ public class WordLetterGenerator implements LetterGenerator {
 			runLogin.addBreak();
 			
 			XWPFRun runUser = paragraph.createRun();
-			runUser.setText("Username: "+ c.getEmail());
+			runUser.setText("Username: "+ c.getID());
 			runUser.addBreak();
 			
 			XWPFRun runPass = paragraph.createRun();
