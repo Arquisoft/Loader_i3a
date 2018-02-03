@@ -16,13 +16,13 @@ import org.junit.Test;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoDatabase;
 
-import es.uniovi.asw.parser.Citizen;
+import es.uniovi.asw.parser.Agent;
 import es.uniovi.asw.parser.ReadList;
 import es.uniovi.asw.parser.readers.TxtReadList;
 
 public class TxtParseTest {
 
-	private Set<Citizen> readData;
+	private Set<Agent> readData;
 
 	@Before
 	public void clearDatabase() {

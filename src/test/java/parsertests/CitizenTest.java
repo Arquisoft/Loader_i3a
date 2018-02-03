@@ -1,26 +1,22 @@
 package parsertests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import es.uniovi.asw.parser.Citizen;
+import es.uniovi.asw.parser.Agent;
 
 public class CitizenTest {
 
 	@Test
 	public void testEquals() {
-		Citizen dummy = new Citizen("a", "b", "a@a.com", "10/10/2010", "a", "a",
-				"123456789Z", "132456789", 1234);
-		Citizen dummy1 = new Citizen("b", "c", "b@a.com", "10/10/2010", "a",
-				"a", "123456789Z", "132456789", 1234);
-		Citizen dummy2 = new Citizen("a", "b", "b@a.com", "10/10/2010", "a",
-				"a", "3", "132456789", 1234);
-		Citizen dummy3 = null;
-		Citizen dummy4 = new Citizen("a", "b", "b@a.com", "10/10/2010", "a",
-				"a", null, "132456789", 1234);
-		Citizen dummy5 = new Citizen("a", "b", "b@a.com", "10/10/2010", "a",
-				"a", null, "132456789", 1234);
+		Agent dummy = new Agent("a", "b", "b@a.com", "132456789", 1);
+		Agent dummy1 = new Agent("b", "c", "b@a.com", "132456789", 1);
+		Agent dummy2 = new Agent("a", "b@a.com", "132456789", 2);
+		Agent dummy3 = null;
+		Agent dummy4 = new Agent("b", "c", "b@a.com", "1324567239", 2);
+		Agent dummy5 = new Agent("a", "c", "b@a.com", "1324567239", 2);
 		Double doub = new Double(5.0);
 
 		assertTrue(dummy.equals(dummy));

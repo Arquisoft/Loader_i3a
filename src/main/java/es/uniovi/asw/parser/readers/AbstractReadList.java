@@ -2,9 +2,9 @@ package es.uniovi.asw.parser.readers;
 
 import java.util.Set;
 
-import es.uniovi.asw.database.CitizenDao;
+import es.uniovi.asw.database.AgentDao;
 import es.uniovi.asw.database.MongoPersistanceFactory;
-import es.uniovi.asw.parser.Citizen;
+import es.uniovi.asw.parser.Agent;
 import es.uniovi.asw.parser.ReadList;
 import es.uniovi.asw.parser.lettergenerators.ConsoleLetterGenerator;
 import es.uniovi.asw.parser.lettergenerators.LetterGenerator;
@@ -18,7 +18,7 @@ import es.uniovi.asw.reportwriter.WriteReportDefault;
  */
 public abstract class AbstractReadList implements ReadList {
 
-	protected Set<Citizen> census;
+	protected Set<Agent> census;
 	private LetterGenerator letterGen;
 	protected WriteReport wReport;
 
@@ -33,7 +33,7 @@ public abstract class AbstractReadList implements ReadList {
 	}
 
 	@Override
-	public Set<Citizen> parse(String ruta) {
+	public Set<Agent> parse(String ruta) {
 
 		doParse(ruta);
 
@@ -44,9 +44,9 @@ public abstract class AbstractReadList implements ReadList {
 		return census;
 	}
 
-	private void insertCitizens(Set<Citizen> census) {
-		CitizenDao dao = MongoPersistanceFactory.getCitizenDao();
-		for (Citizen c : census) {
+	private void insertCitizens(Set<Agent> census) {
+		AgentDao dao = MongoPersistanceFactory.getCitizenDao();
+		for (Agent c : census) {
 			if (dao.insert(c)) {
 				letterGen.generatePersonalLetter(c);
 			}

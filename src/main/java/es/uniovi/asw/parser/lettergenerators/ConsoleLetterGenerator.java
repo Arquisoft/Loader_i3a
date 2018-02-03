@@ -1,6 +1,6 @@
 package es.uniovi.asw.parser.lettergenerators;
 
-import es.uniovi.asw.parser.Citizen;
+import es.uniovi.asw.parser.Agent;
 
 /**
  * 
@@ -10,7 +10,7 @@ import es.uniovi.asw.parser.Citizen;
 public class ConsoleLetterGenerator implements LetterGenerator{
 
 	@Override
-	public void generatePersonalLetter(Citizen c) {
+	public void generatePersonalLetter(Agent c) {
 		/*StringBuilder sb = new StringBuilder();
 		sb.append("To: "+c.getEmail()+"\n");
 		sb.append("Subject: Login data\n");

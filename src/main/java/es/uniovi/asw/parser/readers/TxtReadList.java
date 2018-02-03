@@ -6,7 +6,7 @@ import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.HashSet;
 
-import es.uniovi.asw.parser.Citizen;
+import es.uniovi.asw.parser.Agent;
 import es.uniovi.asw.parser.lettergenerators.LetterGenerator;
 
 public class TxtReadList extends AbstractReadList {
@@ -26,7 +26,7 @@ public class TxtReadList extends AbstractReadList {
 			DataInputStream in = new DataInputStream(fstream);
 			BufferedReader br = new BufferedReader(new InputStreamReader(in));
 			String strLine;
-			census = new HashSet<Citizen>();
+			census = new HashSet<Agent>();
 			int r = 1;
 			int cols = 9;
 			while ((strLine = br.readLine()) != null) {
@@ -45,7 +45,7 @@ public class TxtReadList extends AbstractReadList {
 					} else if (split[7].equals("")) {
 						wReport.report("Null NIF on row number " + r, ruta);
 					} else {
-						Citizen cit = new Citizen(split);
+						Agent cit = new Agent(split);
 						if (census.contains(cit)) {
 							wReport.report("Duplicated citizen on row number " + r, ruta);
 						} else {

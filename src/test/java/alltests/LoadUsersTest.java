@@ -12,7 +12,7 @@ import org.junit.Test;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoDatabase;
 
-import es.uniovi.asw.LoadUsers;
+import es.uniovi.asw.LoadAgents;
 
 public class LoadUsersTest {
 
@@ -33,7 +33,7 @@ public class LoadUsersTest {
 		// Tests how the data is inserted correctly into the database for the
 		// first time.
 		System.setOut(new PrintStream(outContent));
-		LoadUsers.main("src/test/resources/test2.xlsx");
+		LoadAgents.main("src/test/resources/test2.xlsx");
 		assertTrue(outContent.toString().contains("90500084Y letter sent."));
 
 	}
@@ -42,7 +42,7 @@ public class LoadUsersTest {
 	public void testNoFileError() {
 		ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 		System.setErr(new PrintStream(outContent));
-		LoadUsers.main();
+		LoadAgents.main();
 		assertTrue(outContent.toString().contains("Input the name of the file."));
 	}
 

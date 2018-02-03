@@ -11,13 +11,13 @@ import java.util.Set;
 import org.assertj.core.util.Files;
 import org.junit.Test;
 
-import es.uniovi.asw.parser.Citizen;
+import es.uniovi.asw.parser.Agent;
 import es.uniovi.asw.parser.ReadList;
 import es.uniovi.asw.parser.readers.ExcelReadList;
 
 public class ExcelParseTest {
 
-	private Set<Citizen> readData;
+	private Set<Agent> readData;
 
 	@Test
 	public void testParse() {

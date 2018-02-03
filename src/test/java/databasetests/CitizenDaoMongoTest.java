@@ -1,6 +1,10 @@
 package databasetests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
@@ -9,16 +13,16 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import es.uniovi.asw.database.CitizenDao;
+import es.uniovi.asw.database.AgentDao;
 import es.uniovi.asw.database.CitizenDaoImplMongo;
-import es.uniovi.asw.parser.Citizen;
+import es.uniovi.asw.parser.Agent;
 
 public class CitizenDaoMongoTest {
 
-	private Citizen dummy;
-	private Citizen dummy1;
-	private Citizen dummy2;
-	private static CitizenDao dao;
+	private Agent dummy;
+	private Agent dummy1;
+	private Agent dummy2;
+	private static AgentDao dao;
 
 	@BeforeClass
 	public static void setUp() {
@@ -28,12 +32,9 @@ public class CitizenDaoMongoTest {
 
 	@Before
 	public void insertCitizen() {
-		dummy = new Citizen("a", "b", "a@a.com", "10/10/2010", "a", "a",
-				"123456789Z", "132456789", 1234);
-		dummy1 = new Citizen("a", "b", "b@a.com", "10/10/2010", "a", "a", "2",
-				"132456789", 1234);
-		dummy2 = new Citizen("a", "b", "c@a.com", "10/10/2010", "a", "a", "3",
-				"132456789", 1234);
+		dummy = new Agent("a", "b", "a@a.com", "123456789", 1);
+		dummy1 = new Agent("a", "b", "b@a.com", "132456789", 2);
+		dummy2 = new Agent("a", "b", "c@a.com", "132456789", 3);
 	}
 
 	@After
@@ -45,7 +46,7 @@ public class CitizenDaoMongoTest {
 	public void testInsert() {
 
 		dao.insert(dummy);
-		List<Citizen> citizens = dao.findAll();
+		List<Agent> citizens = dao.findAll();
 
 		assertEquals(citizens.size(), 1);
 
@@ -64,7 +65,7 @@ public class CitizenDaoMongoTest {
 		dao.insert(dummy2);
 		dao.insert(dummy1);
 
-		List<Citizen> citizens = dao.findAll();
+		List<Agent> citizens = dao.findAll();
 
 		assertEquals(citizens.size(), 3);
 
@@ -77,7 +78,7 @@ public class CitizenDaoMongoTest {
 	public void testFindById() {
 		dao.insert(dummy);
 
-		Citizen c = dao.findById("1");
+		Agent c = dao.findById("1");
 
 		assertNull(c);
 
@@ -92,7 +93,7 @@ public class CitizenDaoMongoTest {
 		dao.insert(dummy1);
 		dao.insert(dummy2);
 
-		List<Citizen> citizens = dao.findAll();
+		List<Agent> citizens = dao.findAll();
 
 		assertEquals(citizens.size(), 3);
 
@@ -139,7 +140,7 @@ public class CitizenDaoMongoTest {
 		dao.insert(dummy);
 		dao.insert(dummy);
 
-		List<Citizen> citizens = dao.findAll();
+		List<Agent> citizens = dao.findAll();
 
 		assertEquals(citizens.size(), 1);
 	}
