@@ -14,8 +14,7 @@ public class PasswordTest {
 
 	@Test
 	public void testNotNull() {
-		Agent c = new Agent("a", "b", "a@a.com", "10/10/2010", "a", "a",
-				"7198791Z", "2652165165", 1234);
+		Agent c = new Agent("a b", "", "a@a.com","7198791Z", 1);
 		Set<Agent> census = new HashSet<Agent>();
 		census.add(c);
 		PasswordGenerator.createPasswords(census);
