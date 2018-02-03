@@ -71,7 +71,7 @@ public class Agent {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((ID == null) ? 0 : ID.hashCode());
+		result = prime * result + ((ID == null) ? 0 : (ID.hashCode() + Integer.valueOf(this.kind).hashCode()));
 		return result;
 	}
 
@@ -87,7 +87,7 @@ public class Agent {
 		if (ID == null) {
 			if (other.ID != null)
 				return false;
-		} else if (!ID.equals(other.ID))
+		} else if (this.hashCode() != other.hashCode())
 			return false;
 		return true;
 	}
