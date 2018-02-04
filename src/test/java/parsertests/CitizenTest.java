@@ -19,6 +19,10 @@ public class CitizenTest {
 		Agent dummy5 = new Agent("b", "c", "b@a.com", "1324567239", 2);
 		Double doub = new Double(5.0);
 
+		System.out.println(dummy2.hashCode());
+		System.out.println(dummy.hashCode());
+		
+		
 		assertTrue(dummy.equals(dummy));
 		assertTrue(dummy.equals(dummy1));
 		assertFalse(dummy.equals(dummy2));

@@ -35,16 +35,11 @@ public class TxtParseTest {
 	@Test
 	public void testParse() {
 		clearDatabase();
-		String resultSt = "[Citizen [firstName=adri, lastName=miron, email=testemail@uniovi.es, "
-				+ "birthDate=Sun May 19 00:00:00 CEST 1996, address=C/Asturias, "
-				+ "ID=testid, nationality=camboya, NIF=1234, pollingStation=1]]";
-		String resultTravis = "[Citizen [firstName=adri, lastName=miron, email=testemail@uniovi.es, "
-				+ "birthDate=Sun May 19 00:00:00 UTC 1996, address=C/Asturias, "
-				+ "ID=testid, nationality=camboya, NIF=1234, pollingStation=1]]";
+		String resultSt = "[Citizen [name=adri miron, location=40.5N30.6W,  email=testemail@uniovi.es, ID=testid, kind=1]]";
+		String resultTravis = "[Citizen [name=adri miron, location=40.5N30.6W,  email=testemail@uniovi.es, ID=testid, kind=1]]";
 		ReadList rl = new TxtReadList();
 		readData = rl.parse("src/test/resources/test.txt");
-		assertTrue(readData.toString().equals(resultSt)
-				|| readData.toString().equals(resultTravis));
+		assertTrue(readData.toString().equals(resultSt) || readData.toString().equals(resultTravis));
 
 	}
 
@@ -54,8 +49,7 @@ public class TxtParseTest {
 	 * 
 	 */
 	public void testNoDNI() {
-		SimpleDateFormat formatofilename = new SimpleDateFormat("dd-MM-yyyy",
-				Locale.getDefault());
+		SimpleDateFormat formatofilename = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
 		String filename = formatofilename.format(new Date()) + ".txt";
 		File file = new File(filename);
 
@@ -73,8 +67,7 @@ public class TxtParseTest {
 	 */
 	@Test
 	public void testNoName() {
-		SimpleDateFormat formatofilename = new SimpleDateFormat("dd-MM-yyyy",
-				Locale.getDefault());
+		SimpleDateFormat formatofilename = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
 		String filename = formatofilename.format(new Date()) + ".txt";
 		File file = new File(filename);
 
@@ -92,8 +85,7 @@ public class TxtParseTest {
 	 */
 	@Test
 	public void testNoSurname() {
-		SimpleDateFormat formatofilename = new SimpleDateFormat("dd-MM-yyyy",
-				Locale.getDefault());
+		SimpleDateFormat formatofilename = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
 		String filename = formatofilename.format(new Date()) + ".txt";
 		File file = new File(filename);
 
@@ -111,8 +103,7 @@ public class TxtParseTest {
 	 */
 	@Test
 	public void testNoBirthDate() {
-		SimpleDateFormat formatofilename = new SimpleDateFormat("dd-MM-yyyy",
-				Locale.getDefault());
+		SimpleDateFormat formatofilename = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
 		String filename = formatofilename.format(new Date()) + ".txt";
 		File file = new File(filename);
 
@@ -130,8 +121,7 @@ public class TxtParseTest {
 	 */
 	@Test
 	public void testNoNIF() {
-		SimpleDateFormat formatofilename = new SimpleDateFormat("dd-MM-yyyy",
-				Locale.getDefault());
+		SimpleDateFormat formatofilename = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
 		String filename = formatofilename.format(new Date()) + ".txt";
 		File file = new File(filename);
 
@@ -149,8 +139,7 @@ public class TxtParseTest {
 	 */
 	@Test
 	public void testNoAddress() {
-		SimpleDateFormat formatofilename = new SimpleDateFormat("dd-MM-yyyy",
-				Locale.getDefault());
+		SimpleDateFormat formatofilename = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
 		String filename = formatofilename.format(new Date()) + ".txt";
 		File file = new File(filename);
 
@@ -167,8 +156,7 @@ public class TxtParseTest {
 	 */
 	@Test
 	public void testNoRow() {
-		SimpleDateFormat formatofilename = new SimpleDateFormat("dd-MM-yyyy",
-				Locale.getDefault());
+		SimpleDateFormat formatofilename = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
 		String filename = formatofilename.format(new Date()) + ".txt";
 		File file = new File(filename);
 
@@ -185,8 +173,7 @@ public class TxtParseTest {
 	 */
 	@Test
 	public void testDuplicate() {
-		SimpleDateFormat formatofilename = new SimpleDateFormat("dd-MM-yyyy",
-				Locale.getDefault());
+		SimpleDateFormat formatofilename = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
 		String filename = formatofilename.format(new Date()) + ".txt";
 		File file = new File(filename);
 

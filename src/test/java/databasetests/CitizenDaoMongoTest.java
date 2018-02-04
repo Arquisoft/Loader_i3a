@@ -32,9 +32,9 @@ public class CitizenDaoMongoTest {
 
 	@Before
 	public void insertCitizen() {
-		dummy = new Agent("a", "b", "a@a.com", "123456789", 1);
-		dummy1 = new Agent("a", "b", "b@a.com", "132456789", 2);
-		dummy2 = new Agent("a", "b", "c@a.com", "132456789", 3);
+		dummy = new Agent("a", "b", "a@a.com", "1", 1);
+		dummy1 = new Agent("a", "b", "b@a.com", "2", 2);
+		dummy2 = new Agent("a", "b", "c@a.com", "3", 3);
 	}
 
 	@After
@@ -76,13 +76,13 @@ public class CitizenDaoMongoTest {
 
 	@Test
 	public void testFindById() {
-		dao.insert(dummy);
+		dao.insert(dummy); //id = 1
 
-		Agent c = dao.findById("1");
+		Agent c = dao.findById("0"); //The db does not contain anyone with this id
 
 		assertNull(c);
 
-		c = dao.findById("123456789Z");
+		c = dao.findById("1");
 		assertNotNull(c);
 		assertEquals(dummy, c);
 	}
@@ -97,7 +97,7 @@ public class CitizenDaoMongoTest {
 
 		assertEquals(citizens.size(), 3);
 
-		dao.remove("1");
+		dao.remove("0"); //Does not delete anything
 
 		assertTrue(citizens.contains(dummy));
 		assertTrue(citizens.contains(dummy1));
@@ -111,14 +111,14 @@ public class CitizenDaoMongoTest {
 		assertTrue(citizens.contains(dummy1));
 		assertTrue(citizens.contains(dummy2));
 
-		dao.remove("2");
+		dao.remove("1");
 
 		citizens = dao.findAll();
 
 		assertEquals(citizens.size(), 2);
 
-		assertTrue(citizens.contains(dummy));
-		assertFalse(citizens.contains(dummy1));
+		assertFalse(citizens.contains(dummy));
+		assertTrue(citizens.contains(dummy1));
 		assertTrue(citizens.contains(dummy2));
 
 		dao.remove("3");
@@ -127,8 +127,8 @@ public class CitizenDaoMongoTest {
 
 		assertEquals(citizens.size(), 1);
 
-		assertTrue(citizens.contains(dummy));
-		assertFalse(citizens.contains(dummy1));
+		assertFalse(citizens.contains(dummy));
+		assertTrue(citizens.contains(dummy1));
 		assertFalse(citizens.contains(dummy2));
 
 	}

@@ -32,11 +32,11 @@ public class Agent {
 	}
 
 	public Agent(String[] data) {
-		this.name = data[0];
-		this.email = data[1];
-		setLocation(data[2]);
-		this.ID = data[3];
-		this.kind = Integer.parseInt(data[4]);
+		this.name = data[0] + " " + data[1]; //0
+		this.email = data[2]; //1
+		setLocation(data[3]); //2
+		this.ID = data[4]; //3
+		this.kind = Integer.parseInt(data[5]);
 	}
 
 	public String getName() {
