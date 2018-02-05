@@ -63,7 +63,7 @@ public class ExcelReadList extends AbstractReadList {
 					} else if (data[1] == null) {
 						wReport.report("Null location on row number " + r, ruta);
 					} else if (data[4] == null) {
-						wReport.report("Null Kind on row number " + r, ruta);
+						wReport.report("Null kind on row number " + r, ruta);
 					} else {
 
 						cit = new Agent(data);
@@ -99,9 +99,7 @@ public class ExcelReadList extends AbstractReadList {
 			for (int c = 0; c < cols; c++) {
 				cell = row.getCell((short) c);
 				if (cell != null && !cell.toString().equals("")) {
-
 					data[c] = cell.toString();
-
 				}
 			}
 			return data;
