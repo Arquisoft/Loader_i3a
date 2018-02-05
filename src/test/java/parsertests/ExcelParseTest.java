@@ -100,14 +100,14 @@ public class ExcelParseTest {
 		assertTrue(file.exists());
 		Files.delete(file);
 	}
-
+	
 	/**
 	 * Checks that the report file is generated when the excel doesn't have a
-	 * birthdate
+	 * kind
 	 * 
 	 */
 	@Test
-	public void testNoBirthDate() {
+	public void testNoKind() {
 		SimpleDateFormat formatofilename = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
 		String filename = formatofilename.format(new Date()) + ".txt";
 		File file = new File(filename);
@@ -120,35 +120,18 @@ public class ExcelParseTest {
 	}
 
 	/**
-	 * Checks that the report file is generated when the excel doesn't have the NIF
+	 * Checks that the report file is generated when the excel doesn't have a
+	 * location
 	 * 
 	 */
 	@Test
-	public void testNoNIF() {
+	public void testNoLocation() {
 		SimpleDateFormat formatofilename = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
 		String filename = formatofilename.format(new Date()) + ".txt";
 		File file = new File(filename);
 
 		ReadList rl = new ExcelReadList();
 		readData = rl.parse("src/test/resources/test7.xlsx");
-
-		assertTrue(file.exists());
-		Files.delete(file);
-	}
-
-	/**
-	 * Checks that the report file is generated when the excel doesn't have an
-	 * address
-	 * 
-	 */
-	@Test
-	public void testNoAddress() {
-		SimpleDateFormat formatofilename = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
-		String filename = formatofilename.format(new Date()) + ".txt";
-		File file = new File(filename);
-
-		ReadList rl = new ExcelReadList();
-		readData = rl.parse("src/test/resources/test8.xlsx");
 
 		assertTrue(file.exists());
 		Files.delete(file);
@@ -165,7 +148,7 @@ public class ExcelParseTest {
 		File file = new File(filename);
 
 		ReadList rl = new ExcelReadList();
-		readData = rl.parse("src/test/resources/test10.xlsx");
+		readData = rl.parse("src/test/resources/test9.xlsx");
 
 		assertTrue(file.exists());
 		Files.delete(file);
@@ -182,7 +165,7 @@ public class ExcelParseTest {
 		File file = new File(filename);
 
 		ReadList rl = new ExcelReadList();
-		readData = rl.parse("src/test/resources/test9.xlsx");
+		readData = rl.parse("src/test/resources/test8.xlsx");
 
 		assertTrue(file.exists());
 		Files.delete(file);
