@@ -28,7 +28,6 @@ public class ExcelParseTest {
 		ReadList rl = new ExcelReadList();
 		readData = rl.parse("src/test/resources/test2.xlsx");
 
-		System.out.println("***" + readData.toString());
 		assertTrue(readData.toString().equals(result) || readData.toString().equals(resultForTravis));
 	}
 
