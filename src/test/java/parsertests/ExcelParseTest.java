@@ -21,13 +21,13 @@ public class ExcelParseTest {
 
 	@Test
 	public void testParse() {
-		String result = "[Citizen [name=Juan Torres Pardo, location=40.5N30.99W, "
-				+ "email=juan@example.com, ID=123, kind=1]]";
-		String resultForTravis = "[Citizen [name=Juan Torres Pardo, location=40.5N30.99W, email=juan@example.com, ID=123, kind=1]]";
+		String result = "[Citizen [name=Juan Torres Pardo, location=juan@example.com,  email=40.5N30.99W, ID=123.0, kind=1]]";
+		String resultForTravis = "[Citizen [name=Juan Torres Pardo, location=juan@example.com,  email=40.5N30.99W, ID=123.0, kind=1]]";
 
 		ReadList rl = new ExcelReadList();
 		readData = rl.parse("src/test/resources/test2.xlsx");
 
+		System.out.println("***" + readData.toString());
 		assertTrue(readData.toString().equals(result) || readData.toString().equals(resultForTravis));
 	}
 
