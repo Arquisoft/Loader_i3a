@@ -151,7 +151,7 @@ public class CitizenDaoImplMongo implements AgentDao {
 		while (cursor.hasNext()) {
 			DBObject user = cursor.next();
 			c = new Agent((String) user.get("name"), (String) user.get("address"), (String) user.get("email"),
-					(String) user.get("id"), (int) user.get("kind"));
+					(String) user.get("id"), (int) user.get("kind"), (String) user.get("password"));
 		}
 		return c;
 	}
@@ -171,7 +171,7 @@ public class CitizenDaoImplMongo implements AgentDao {
 		while (cursor.hasNext()) {
 			DBObject user = cursor.next();
 			Agent c = new Agent((String) user.get("name"), (String) user.get("address"), (String) user.get("email"),
-					(String) user.get("id"), (int) user.get("kind"));
+					(String) user.get("id"), (int) user.get("kind"),(String) user.get("password"));
 			allCitizens.add(c);
 		}
 
