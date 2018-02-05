@@ -36,7 +36,9 @@ public class Agent {
 		this.email = data[1];
 		setLocation(data[2]);
 		this.ID = data[3];
-		this.kind = Integer.parseInt(data[4]);
+		Double k = Double.parseDouble(data[4]);
+		this.kind = k.intValue();
+
 	}
 
 	public String getName() {
@@ -105,7 +107,5 @@ public class Agent {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
 
 }
