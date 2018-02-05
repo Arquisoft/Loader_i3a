@@ -83,59 +83,6 @@ public class ExcelParseTest {
 	}
 
 	/**
-	 * Checks that the report file is generated when the excel doesn't have a
-	 * birthdate
-	 * 
-	 */
-	@Test
-	public void testNoBirthDate() {
-		SimpleDateFormat formatofilename = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
-		String filename = formatofilename.format(new Date()) + ".txt";
-		File file = new File(filename);
-
-		ReadList rl = new ExcelReadList();
-		readData = rl.parse("src/test/resources/test6.xlsx");
-
-		assertTrue(file.exists());
-		Files.delete(file);
-	}
-
-	/**
-	 * Checks that the report file is generated when the excel doesn't have the NIF
-	 * 
-	 */
-	@Test
-	public void testNoNIF() {
-		SimpleDateFormat formatofilename = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
-		String filename = formatofilename.format(new Date()) + ".txt";
-		File file = new File(filename);
-
-		ReadList rl = new ExcelReadList();
-		readData = rl.parse("src/test/resources/test7.xlsx");
-
-		assertTrue(file.exists());
-		Files.delete(file);
-	}
-
-	/**
-	 * Checks that the report file is generated when the excel doesn't have an
-	 * address
-	 * 
-	 */
-	@Test
-	public void testNoAddress() {
-		SimpleDateFormat formatofilename = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
-		String filename = formatofilename.format(new Date()) + ".txt";
-		File file = new File(filename);
-
-		ReadList rl = new ExcelReadList();
-		readData = rl.parse("src/test/resources/test8.xlsx");
-
-		assertTrue(file.exists());
-		Files.delete(file);
-	}
-
-	/**
 	 * Checks that the report file is generated when the excel has a blank row.
 	 * 
 	 */
