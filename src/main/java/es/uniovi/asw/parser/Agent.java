@@ -21,6 +21,12 @@ public class Agent {
 		this.ID = ID;
 		this.kind = kind;
 	}
+	
+	public Agent(String name, String location, String email, String ID, int kind,String pass) {
+
+		this(name,location,email,ID,kind);
+		this.password = pass;
+	}
 
 	public Agent(String name, String email, String ID, int kind) {
 
