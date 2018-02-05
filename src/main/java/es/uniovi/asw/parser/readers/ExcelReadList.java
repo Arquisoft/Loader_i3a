@@ -62,11 +62,11 @@ public class ExcelReadList extends AbstractReadList {
 					} else if (data[2] == null) {
 						wReport.report("Null email on row number " + r, ruta);
 					} else if (data[3] == null) {
-						wReport.report("Null kind on row number " + r, ruta);
+						wReport.report("Null id on row number " + r, ruta);
 					} else if (data[1] == null) {
 						wReport.report("Null location on row number " + r, ruta);
 					} else if (data[4] == null) {
-						wReport.report("Null Kind on row number " + r, ruta);
+						wReport.report("Null kind on row number " + r, ruta);
 					} else {
 						cit = new Agent(data);
 						if (census.contains(cit)) {
@@ -104,7 +104,7 @@ public class ExcelReadList extends AbstractReadList {
 					if (cell.getCellTypeEnum() == CellType.NUMERIC && DateUtil.isCellDateFormatted(cell)) {
 						SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 						data[c] = sdf.format(cell.getDateCellValue());
-					} else {
+					}else {
 						data[c] = cell.toString();
 					}
 				}
