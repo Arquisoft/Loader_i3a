@@ -1,6 +1,6 @@
 package parsertests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -21,22 +21,14 @@ public class ExcelParseTest {
 
 	@Test
 	public void testParse() {
-		String result = "[Citizen [firstName=Juan, lastName=Torres"
-				+ " Pardo, email=juan@example.com, birthDate=Thu Oct"
-				+ " 10 00:00:00 CET 1985, address=C/ Federico García Lorca 2,"
-				+ " ID=90500084Y, "
-				+ "nationality=Español, NIF=1.0, pollingStation=1]]";
-		String resultForTravis = "[Citizen [firstName=Juan, lastName=Torres"
-				+ " Pardo, email=juan@example.com, birthDate=Thu Oct"
-				+ " 10 00:00:00 UTC 1985, address=C/ Federico García Lorca 2,"
-				+ " ID=90500084Y, "
-				+ "nationality=Español, NIF=1.0, pollingStation=1]]";
+		String result = "[Agent [name=Juan Torres Pardo, location=juan@example.com,  email=40.5N30.99W, ID=123.0, kind=1]]";
+		String resultForTravis = "[Agent [name=Juan Torres Pardo, location=juan@example.com,  email=40.5N30.99W, ID=123.0, kind=1]]";
 
 		ReadList rl = new ExcelReadList();
 		readData = rl.parse("src/test/resources/test2.xlsx");
 
-		assertTrue(readData.toString().equals(result)
-				|| readData.toString().equals(resultForTravis));
+		System.out.println("***" + readData.toString());
+		assertTrue(readData.toString().equals(result) || readData.toString().equals(resultForTravis));
 	}
 
 	@Test
@@ -45,8 +37,7 @@ public class ExcelParseTest {
 	 * 
 	 */
 	public void fileNotFound() {
-		SimpleDateFormat formatofilename = new SimpleDateFormat("dd-MM-yyyy",
-				Locale.getDefault());
+		SimpleDateFormat formatofilename = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
 		String filename = formatofilename.format(new Date()) + ".txt";
 		File file = new File(filename);
 
@@ -63,8 +54,7 @@ public class ExcelParseTest {
 	 * 
 	 */
 	public void testNoDNI() {
-		SimpleDateFormat formatofilename = new SimpleDateFormat("dd-MM-yyyy",
-				Locale.getDefault());
+		SimpleDateFormat formatofilename = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
 		String filename = formatofilename.format(new Date()) + ".txt";
 		File file = new File(filename);
 
@@ -76,14 +66,12 @@ public class ExcelParseTest {
 	}
 
 	/**
-	 * Checks that the report file is generated when the excel doesn't have a
-	 * name
+	 * Checks that the report file is generated when the excel doesn't have a name
 	 * 
 	 */
 	@Test
 	public void testNoName() {
-		SimpleDateFormat formatofilename = new SimpleDateFormat("dd-MM-yyyy",
-				Locale.getDefault());
+		SimpleDateFormat formatofilename = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
 		String filename = formatofilename.format(new Date()) + ".txt";
 		File file = new File(filename);
 
@@ -93,35 +81,15 @@ public class ExcelParseTest {
 		assertTrue(file.exists());
 		Files.delete(file);
 	}
-
+	
 	/**
 	 * Checks that the report file is generated when the excel doesn't have a
-	 * surname
+	 * kind
 	 * 
 	 */
 	@Test
-	public void testNoSurname() {
-		SimpleDateFormat formatofilename = new SimpleDateFormat("dd-MM-yyyy",
-				Locale.getDefault());
-		String filename = formatofilename.format(new Date()) + ".txt";
-		File file = new File(filename);
-
-		ReadList rl = new ExcelReadList();
-		readData = rl.parse("src/test/resources/test5.xlsx");
-
-		assertTrue(file.exists());
-		Files.delete(file);
-	}
-
-	/**
-	 * Checks that the report file is generated when the excel doesn't have a
-	 * birthdate
-	 * 
-	 */
-	@Test
-	public void testNoBirthDate() {
-		SimpleDateFormat formatofilename = new SimpleDateFormat("dd-MM-yyyy",
-				Locale.getDefault());
+	public void testNoKind() {
+		SimpleDateFormat formatofilename = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
 		String filename = formatofilename.format(new Date()) + ".txt";
 		File file = new File(filename);
 
@@ -133,14 +101,13 @@ public class ExcelParseTest {
 	}
 
 	/**
-	 * Checks that the report file is generated when the excel doesn't have the
-	 * NIF
+	 * Checks that the report file is generated when the excel doesn't have a
+	 * location
 	 * 
 	 */
 	@Test
-	public void testNoNIF() {
-		SimpleDateFormat formatofilename = new SimpleDateFormat("dd-MM-yyyy",
-				Locale.getDefault());
+	public void testNoLocation() {
+		SimpleDateFormat formatofilename = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
 		String filename = formatofilename.format(new Date()) + ".txt";
 		File file = new File(filename);
 
@@ -152,37 +119,17 @@ public class ExcelParseTest {
 	}
 
 	/**
-	 * Checks that the report file is generated when the excel doesn't have an
-	 * address
-	 * 
-	 */
-	@Test
-	public void testNoAddress() {
-		SimpleDateFormat formatofilename = new SimpleDateFormat("dd-MM-yyyy",
-				Locale.getDefault());
-		String filename = formatofilename.format(new Date()) + ".txt";
-		File file = new File(filename);
-
-		ReadList rl = new ExcelReadList();
-		readData = rl.parse("src/test/resources/test8.xlsx");
-
-		assertTrue(file.exists());
-		Files.delete(file);
-	}
-
-	/**
 	 * Checks that the report file is generated when the excel has a blank row.
 	 * 
 	 */
 	@Test
 	public void testNoRow() {
-		SimpleDateFormat formatofilename = new SimpleDateFormat("dd-MM-yyyy",
-				Locale.getDefault());
+		SimpleDateFormat formatofilename = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
 		String filename = formatofilename.format(new Date()) + ".txt";
 		File file = new File(filename);
 
 		ReadList rl = new ExcelReadList();
-		readData = rl.parse("src/test/resources/test10.xlsx");
+		readData = rl.parse("src/test/resources/test9.xlsx");
 
 		assertTrue(file.exists());
 		Files.delete(file);
@@ -194,13 +141,12 @@ public class ExcelParseTest {
 	 */
 	@Test
 	public void testNoDuplicate() {
-		SimpleDateFormat formatofilename = new SimpleDateFormat("dd-MM-yyyy",
-				Locale.getDefault());
+		SimpleDateFormat formatofilename = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
 		String filename = formatofilename.format(new Date()) + ".txt";
 		File file = new File(filename);
 
 		ReadList rl = new ExcelReadList();
-		readData = rl.parse("src/test/resources/test9.xlsx");
+		readData = rl.parse("src/test/resources/test8.xlsx");
 
 		assertTrue(file.exists());
 		Files.delete(file);

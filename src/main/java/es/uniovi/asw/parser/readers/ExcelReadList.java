@@ -3,12 +3,9 @@ package es.uniovi.asw.parser.readers;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.HashSet;
 
 import org.apache.poi.openxml4j.opc.OPCPackage;
-import org.apache.poi.ss.usermodel.CellType;
-import org.apache.poi.ss.usermodel.DateUtil;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -46,9 +43,7 @@ public class ExcelReadList extends AbstractReadList {
 
 			int rows = sheet.getPhysicalNumberOfRows();
 
-			int cols = 9; // Nombre/Apellidos/Email/Fecha
-							// nacimiento/Dirección/Nacionalidad/DNI/NIF/Polling
-							// code
+			int cols = 5; // CAMBIADO A: name, location, email, id, kind
 
 			for (int r = 1; r < rows; r++) {
 				row = sheet.getRow(r);
@@ -59,24 +54,24 @@ public class ExcelReadList extends AbstractReadList {
 
 				if (data != null) {
 
-					if (data[6] == null) {
-						wReport.report("Null DNI on row number " + r, ruta);
-					} else if (data[0] == null) {
+					if (data[0] == null) {
 						wReport.report("Null name on row number " + r, ruta);
+					} else if (data[2] == null) {
+						wReport.report("Null email on row number " + r, ruta);
 					} else if (data[3] == null) {
-						wReport.report("Null birth date on row number " + r, ruta);
-					} else if (data[4] == null) {
-						wReport.report("Null address on row number " + r, ruta);
+						wReport.report("Null id on row number " + r, ruta);
 					} else if (data[1] == null) {
-						wReport.report("Null last name on row number " + r, ruta);
-					} else if (data[7] == null) {
-						wReport.report("Null NIF on row number " + r, ruta);
+						wReport.report("Null location on row number " + r, ruta);
+					} else if (data[4] == null) {
+						wReport.report("Null kind on row number " + r, ruta);
 					} else {
+
 						cit = new Agent(data);
 						if (census.contains(cit)) {
 							wReport.report("Duplicated citizen on row number " + r, ruta);
 						} else {
 							census.add(cit);
+
 						}
 
 					}
@@ -96,7 +91,6 @@ public class ExcelReadList extends AbstractReadList {
 		}
 	}
 
-	@SuppressWarnings("deprecation")
 	private String[] parseRow(XSSFRow row, int cols) throws ParseException {
 		XSSFCell cell;
 		String[] data = new String[cols];
@@ -105,13 +99,7 @@ public class ExcelReadList extends AbstractReadList {
 			for (int c = 0; c < cols; c++) {
 				cell = row.getCell((short) c);
 				if (cell != null && !cell.toString().equals("")) {
-					if (cell.getCellTypeEnum() == CellType.NUMERIC 
-							&& DateUtil.isCellDateFormatted(cell)) {
-						SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-						data[c] = sdf.format(cell.getDateCellValue());
-					} else {
-						data[c] = cell.toString();
-					}
+					data[c] = cell.toString();
 				}
 			}
 			return data;

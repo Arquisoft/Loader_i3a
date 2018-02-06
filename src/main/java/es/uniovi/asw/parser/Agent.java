@@ -22,6 +22,12 @@ public class Agent {
 		this.kind = kind;
 	}
 
+	public Agent(String name, String location, String email, String ID, int kind,String pass) {
+
+		this(name,location,email,ID,kind);
+		this.password = pass;
+	}
+
 	public Agent(String name, String email, String ID, int kind) {
 
 		this.name = name;
@@ -32,11 +38,13 @@ public class Agent {
 	}
 
 	public Agent(String[] data) {
-		this.name = data[0] + " " + data[1]; //0
-		this.email = data[2]; //1
-		setLocation(data[3]); //2
-		this.ID = data[4]; //3
-		this.kind = Integer.parseInt(data[5]);
+		this.name = data[0];
+		this.email = data[1];
+		setLocation(data[2]);
+		this.ID = data[3];
+		Double k = Double.parseDouble(data[4]);
+		this.kind = k.intValue();
+
 	}
 
 	public String getName() {
@@ -105,7 +113,5 @@ public class Agent {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
 
 }
