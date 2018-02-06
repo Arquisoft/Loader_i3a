@@ -1,1 +1,1 @@
-adri;miron;testemail@uniovi.es;19/5/1996;C/Asturias;camboya;;1234;1
+Adrian Garcia;40.5N30.6W;testemail@uniovi.es;1234;1

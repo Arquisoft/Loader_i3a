@@ -12,6 +12,7 @@ import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 import com.mongodb.DuplicateKeyException;
 import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
 import com.mongodb.MongoException;
 
 import es.uniovi.asw.parser.Agent;
@@ -42,8 +43,10 @@ public class CitizenDaoImplMongo implements AgentDao {
 		if (loadProperties()) {
 
 			this.reporter = new WriteReportDefault();
-			this.mongo = new MongoClient(properties.getProperty("host"),
-					Integer.parseInt(properties.getProperty("port")));
+//			this.mongo = new MongoClient(properties.getProperty("host"),
+//					Integer.parseInt(properties.getProperty("port")));
+			this.mongo = new MongoClient(
+					new MongoClientURI("mongodb://loader:1234@ds237445.mlab.com:37445/aswdb"));
 			this.db = mongo.getDB(properties.getProperty("database"));
 			this.users = db.getCollection(properties.getProperty("collection"));
 
@@ -79,8 +82,9 @@ public class CitizenDaoImplMongo implements AgentDao {
 	 */
 	@SuppressWarnings("deprecation")
 	public CitizenDaoImplMongo(String host, int port, String database, String collection) {
+		this();
 		this.reporter = new WriteReportDefault();
-		this.mongo = new MongoClient(host, port);
+		//this.mongo = new MongoClient(host, port);
 		this.db = mongo.getDB(database);
 		this.users = db.getCollection(collection);
 

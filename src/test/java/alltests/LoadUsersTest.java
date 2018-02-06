@@ -10,6 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoDatabase;
 
 import es.uniovi.asw.LoadAgents;
@@ -19,7 +20,8 @@ public class LoadUsersTest {
 	@Before
 	public void clearDatabase() {
 		@SuppressWarnings("resource")
-		MongoClient mongoClient = new MongoClient("localhost", 27017);
+		MongoClient mongoClient = new MongoClient(
+				new MongoClientURI("mongodb://loader:1234@ds237445.mlab.com:37445/aswdb"));
 		MongoDatabase db = mongoClient.getDatabase("Citizens");
 		db.getCollection("users").deleteMany(new Document());
 	}

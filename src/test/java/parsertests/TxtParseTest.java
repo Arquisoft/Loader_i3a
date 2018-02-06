@@ -14,6 +14,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoDatabase;
 
 import es.uniovi.asw.parser.Agent;
@@ -24,19 +25,21 @@ public class TxtParseTest {
 
 	private Set<Agent> readData;
 
-	@Before
+	//@Before
 	public void clearDatabase() {
 		@SuppressWarnings("resource")
-		MongoClient mongoClient = new MongoClient("localhost", 27017);
-		MongoDatabase db = mongoClient.getDatabase("Citizens");
+		MongoClient mongoClient = new MongoClient(
+				new MongoClientURI("mongodb://loader:1234@ds237445.mlab.com:37445/aswdb"));
+		
+		MongoDatabase db = mongoClient.getDatabase("users");
 		db.getCollection("users").deleteMany(new Document());
 	}
 
 	@Test
 	public void testParse() {
-		clearDatabase();
-		String resultSt = "[Citizen [name=adri miron, location=40.5N30.6W,  email=testemail@uniovi.es, ID=testid, kind=1]]";
-		String resultTravis = "[Citizen [name=adri miron, location=40.5N30.6W,  email=testemail@uniovi.es, ID=testid, kind=1]]";
+//		clearDatabase();
+		String resultSt = "[Agent [name=adri miron, location=40.5N30.6W,  email=testemail@uniovi.es, ID=1234, kind=1]]";
+		String resultTravis = "[Agent [name=adri miron, location=40.5N30.6W,  email=testemail@uniovi.es, ID=1234, kind=1]]";
 		ReadList rl = new TxtReadList();
 		readData = rl.parse("src/test/resources/test.txt");
 		assertTrue(readData.toString().equals(resultSt) || readData.toString().equals(resultTravis));

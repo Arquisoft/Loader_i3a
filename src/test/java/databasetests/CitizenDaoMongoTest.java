@@ -26,7 +26,7 @@ public class CitizenDaoMongoTest {
 
 	@BeforeClass
 	public static void setUp() {
-		dao = new CitizenDaoImplMongo("localhost", 27017, "test", "test");
+		dao = new CitizenDaoImplMongo(/*"localhost", 27017, "test", "test"*/);
 		dao.cleanDatabase();
 	}
 

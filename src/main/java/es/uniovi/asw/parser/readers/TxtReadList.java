@@ -28,7 +28,7 @@ public class TxtReadList extends AbstractReadList {
 			String strLine;
 			census = new HashSet<Agent>();
 			int r = 1;
-			int cols = 6;
+			int cols = 5;
 			while ((strLine = br.readLine()) != null) {
 				String[] split = strLine.split(";");
 				if (split.length == cols) {

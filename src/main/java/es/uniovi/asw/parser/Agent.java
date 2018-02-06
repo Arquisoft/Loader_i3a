@@ -39,13 +39,15 @@ public class Agent {
 
 	public Agent(String[] data) {
 		this.name = data[0];
-		this.email = data[1];
-		setLocation(data[2]);
+		this.email = data[2];
+		setLocation(data[1]);
 		this.ID = data[3];
 		Double k = Double.parseDouble(data[4]);
 		this.kind = k.intValue();
 
 	}
+	
+
 
 	public String getName() {
 		return name;
@@ -102,7 +104,7 @@ public class Agent {
 
 	@Override
 	public String toString() {
-		return "Citizen [name=" + name + ", location=" + location + ",  email=" + email + ", ID=" + ID + ", kind="
+		return "Agent [name=" + name + ", location=" + location + ",  email=" + email + ", ID=" + ID + ", kind="
 				+ kind + "]";
 	}
 
