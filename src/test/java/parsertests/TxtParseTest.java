@@ -31,8 +31,8 @@ public class TxtParseTest {
 		MongoClient mongoClient = new MongoClient(
 				new MongoClientURI("mongodb://loader:1234@ds237445.mlab.com:37445/aswdb"));
 		
-		MongoDatabase db = mongoClient.getDatabase("users");
-		db.getCollection("users").deleteMany(new Document());
+		MongoDatabase db = mongoClient.getDatabase("aswdb");
+		db.getCollection("loader").deleteMany(new Document());
 	}
 
 	@Test
