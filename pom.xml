@@ -2,11 +2,11 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>es.uniovi.asw</groupId>
-	<artifactId>citizensLoader_i3b</artifactId>
-	<version>0.0.1</version>
-	<name>citizensLoader_i3b</name>
+	<artifactId>Loader_i3a</artifactId>
+	<version>0.1</version>
+	<name>Loader_i3a</name>
 	<packaging>jar</packaging>
-	<description>Citizens SubSystem</description>
+	<description>Agents SubSystem</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -169,7 +169,7 @@
 					<!-- MainClass in mainfest make a executable jar -->
 					<archive>
 						<manifest>
-							<mainClass>es.uniovi.asw.LoadUsers</mainClass>
+							<mainClass>es.uniovi.asw.LoadAgents</mainClass>
 						</manifest>
 					</archive>
 
