@@ -314,6 +314,64 @@
 			<timezone>2</timezone>
 			<properties />
 		</developer>
+        
+        		<developer>
+			<id>eleallegue</id>
+			<name>Elena Allegue González</name>
+			<email>elenalleglez@gmail.com</email>
+			<organization>WESO-University of Oviedo</organization>
+			<organizationUrl>http://www.uniovi.es</organizationUrl>
+			<roles>
+				<role>Project Admin</role>
+				<role>Developer</role>
+			</roles>
+			<timezone>2</timezone>
+			<properties />
+		</developer>
+        
+                <developer>
+			<id>alvarezGarciaMarcos</id>
+			<name>Marcos Álvarez García</name>
+			<email>UO251182@uniovi.es</email>
+			<organization>WESO-University of Oviedo</organization>
+			<organizationUrl>http://www.uniovi.es</organizationUrl>
+			<roles>
+				<role>Project Admin</role>
+				<role>Developer</role>
+			</roles>
+			<timezone>2</timezone>
+			<properties />
+		</developer>
+        
+                <developer>
+			<id>acoto</id>
+			<name>Anamaria Cotorei</name>
+			<email>UO251547@uniovi.es</email>
+			<organization>WESO-University of Oviedo</organization>
+			<organizationUrl>http://www.uniovi.es</organizationUrl>
+			<roles>
+				<role>Project Admin</role>
+				<role>Developer</role>
+			</roles>
+			<timezone>2</timezone>
+			<properties />
+		</developer>
+        
+                <developer>
+			<id>cristinavn</id>
+			<name>Cristina Vena Naredo</name>
+			<email>UO251104@uniovi.es</email>
+			<organization>WESO-University of Oviedo</organization>
+			<organizationUrl>http://www.uniovi.es</organizationUrl>
+			<roles>
+				<role>Project Admin</role>
+				<role>Developer</role>
+			</roles>
+			<timezone>2</timezone>
+			<properties />
+		</developer>
+        
+        
 	</developers>
 
 
