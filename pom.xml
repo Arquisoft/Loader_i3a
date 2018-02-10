@@ -104,7 +104,14 @@
 			<artifactId>itextpdf</artifactId>
 			<version>5.5.10</version>
 		</dependency>
+		
+		<dependency>
+	    	<groupId>com.github.computer-engineering-uniovi</groupId>
+		    <artifactId>swift</artifactId>
+		    <version>1.1.1-candidate</version>
+		</dependency>
 	</dependencies>
+	
 	<!--Build plugins -->
 	<build>
 		<sourceDirectory>src/main/java</sourceDirectory>
@@ -288,6 +295,13 @@
 			</plugin>
 		</plugins>
 	</reporting>
+	
+	<repositories>
+		<repository>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+		</repository>
+	</repositories>
 
 	<!--Project Management -->
 	<licenses>
@@ -314,64 +328,58 @@
 			<timezone>2</timezone>
 			<properties />
 		</developer>
-        
-        		<developer>
-			<id>eleallegue</id>
-			<name>Elena Allegue González</name>
-			<email>elenalleglez@gmail.com</email>
-			<organization>WESO-University of Oviedo</organization>
-			<organizationUrl>http://www.uniovi.es</organizationUrl>
-			<roles>
-				<role>Project Admin</role>
-				<role>Developer</role>
-			</roles>
-			<timezone>2</timezone>
-			<properties />
-		</developer>
-        
-                <developer>
-			<id>alvarezGarciaMarcos</id>
-			<name>Marcos Álvarez García</name>
-			<email>UO251182@uniovi.es</email>
-			<organization>WESO-University of Oviedo</organization>
-			<organizationUrl>http://www.uniovi.es</organizationUrl>
-			<roles>
-				<role>Project Admin</role>
-				<role>Developer</role>
-			</roles>
-			<timezone>2</timezone>
-			<properties />
-		</developer>
-        
-                <developer>
+		<developer>
 			<id>acoto</id>
 			<name>Anamaria Cotorei</name>
-			<email>UO251547@uniovi.es</email>
+			<email>uo251547@uniovi.es</email>
 			<organization>WESO-University of Oviedo</organization>
 			<organizationUrl>http://www.uniovi.es</organizationUrl>
 			<roles>
-				<role>Project Admin</role>
+				<role>Project Developer</role>
 				<role>Developer</role>
 			</roles>
 			<timezone>2</timezone>
 			<properties />
 		</developer>
-        
-                <developer>
+		<developer>
+			<id>eleallegue</id>
+			<name>Elena Allegue González</name>
+			<email>uo250878@uniovi.es</email>
+			<organization>WESO-University of Oviedo</organization>
+			<organizationUrl>http://www.uniovi.es</organizationUrl>
+			<roles>
+				<role>Project Developer</role>
+				<role>Developer</role>
+			</roles>
+			<timezone>2</timezone>
+			<properties />
+		</developer>
+		<developer>
 			<id>cristinavn</id>
 			<name>Cristina Vena Naredo</name>
-			<email>UO251104@uniovi.es</email>
+			<email>uo251104@uniovi.es</email>
 			<organization>WESO-University of Oviedo</organization>
 			<organizationUrl>http://www.uniovi.es</organizationUrl>
 			<roles>
-				<role>Project Admin</role>
+				<role>Project Developer</role>
 				<role>Developer</role>
 			</roles>
 			<timezone>2</timezone>
 			<properties />
 		</developer>
-        
-        
+		<developer>
+			<id>marcosalvg</id>
+			<name>Marcos Álvarez García</name>
+			<email>uo251182@uniovi.es</email>
+			<organization>WESO-University of Oviedo</organization>
+			<organizationUrl>http://www.uniovi.es</organizationUrl>
+			<roles>
+				<role>Project Developer</role>
+				<role>Developer</role>
+			</roles>
+			<timezone>2</timezone>
+			<properties />
+		</developer>
 	</developers>
 
 
@@ -379,4 +387,5 @@
 		<name>University of Oviedo</name>
 		<url>http://www.uniovi.es</url>
 	</organization>
+	<url>https://github.com/Arquisoft/Loader_i3a</url>
 </project>
