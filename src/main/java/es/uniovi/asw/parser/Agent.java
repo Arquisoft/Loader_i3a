@@ -1,5 +1,10 @@
 package es.uniovi.asw.parser;
 
+import java.util.NoSuchElementException;
+
+import Foundation.CSVFile;
+import Foundation.URL;
+
 /**
  * @author Ana There are different kind of agents:physical people, entities,
  *         sensors, etc. Each type of user will be identified by a keyword like:
@@ -11,7 +16,9 @@ public class Agent {
 	private String email;
 	private String ID;
 	private String password;
-	private int kind;
+	private int kindCode;
+	private String kind;
+	private static final String KIND_NOT_FOUND = "KIND NOT FOUND";
 
 	public Agent(String name, String location, String email, String ID, int kind) {
 
@@ -19,7 +26,7 @@ public class Agent {
 		setLocation(location);
 		this.email = email;
 		this.ID = ID;
-		this.kind = kind;
+		this.kindCode = kind;
 	}
 
 	public Agent(String name, String location, String email, String ID, int kind,String pass) {
@@ -34,7 +41,7 @@ public class Agent {
 		setLocation(null);// no location
 		this.email = email;
 		this.ID = ID;
-		this.kind = kind;
+		this.kindCode = kind;
 	}
 
 	public Agent(String[] data) {
@@ -43,7 +50,7 @@ public class Agent {
 		setLocation(data[1]);
 		this.ID = data[3];
 		Double k = Double.parseDouble(data[4]);
-		this.kind = k.intValue();
+		this.kindCode = k.intValue();
 
 	}
 	
@@ -73,15 +80,15 @@ public class Agent {
 		return ID;
 	}
 
-	public int getKind() {
-		return kind;
+	public int getKindCode() {
+		return kindCode;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((ID == null) ? 0 : (ID.hashCode() + Integer.valueOf(this.kind).hashCode()));
+		result = prime * result + ((ID == null) ? 0 : (ID.hashCode() + Integer.valueOf(this.kindCode).hashCode()));
 		return result;
 	}
 
@@ -105,7 +112,7 @@ public class Agent {
 	@Override
 	public String toString() {
 		return "Agent [name=" + name + ", location=" + location + ",  email=" + email + ", ID=" + ID + ", kind="
-				+ kind + "]";
+				+ kindCode + "]";
 	}
 
 	public String getPassword() {
@@ -114,6 +121,17 @@ public class Agent {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public String getKind() {
+	    try {
+	        return CSVFile.of( new URL( "src/main/resources/master.csv" ), ",", "id", "kind" )
+		    .getRows().stream()
+		    .filter( r -> r.getColumn( "id" ).equals( Integer.toString( kindCode ) ) )
+		    .findAny().get().getColumn( "kind" );
+	    } catch (NoSuchElementException e) {
+	        return KIND_NOT_FOUND;
+	    }
 	}
 
 }
