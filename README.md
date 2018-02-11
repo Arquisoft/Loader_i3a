@@ -69,10 +69,10 @@ So now you have the application working, congratulations and enjoy it!
 
 # Authors
 
-* Elena Allegue González (@eleallegue)
-* Marcos Álvarez García (@alvarezGarciaMarcos)
-* Anamaria Cotorei (@uo251547)
-* Cristina Vena Naredo (@cristinavn)
+* Elena Allegue González ([@eleallegue](https://github.com/eleallegue))
+* Marcos Álvarez García ([@alvarezGarciaMarcos](https://github.com/alvarezGarciaMarcos))
+* Anamaria Cotorei ([@uo251547](https://github.com/UO251547))
+* Cristina Vena Naredo ([@cristinavn](https://github.com/cristinavn))
 
 # Last Team Authors
 
