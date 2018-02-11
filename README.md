@@ -5,12 +5,14 @@
 [![codecov](https://codecov.io/gh/Arquisoft/Loader_i3a/branch/master/graph/badge.svg)](https://codecov.io/gh/Arquisoft/Loader_i3a)
 
 # Setup
-This program is almost ready to use, but first of all, you need to download [[Maven](https://maven.apache.org/download.cgi).
+This program is almost ready to use, but first of all, you need to download [![Maven](https://maven.apache.org/download.cgi)].
 ## Downloading and installing Maven
 ### Windows
 
-We recommend the binary zip archive of Maven to be downloaded. Once you have downloaded it and unziped it, keep it in a safe place where you know you won't accidently delete it and add the Maven files to yout Path variable. This might sound difficult but it is not, you just have yo navigate (through the windows explorer) to the bin folder inside the files you have just downloaded. Copy the path of this folder by clicking in the navigation bar upper part of the window, right click, and copy.
-Now go to Control Panel > System and Security > system and in the left side of the windows click on Advanced system settings. Once there, click on **Environment Variables** and, in your user variables, scroll down to Path. Select it and click on edit, then new and save your changes. Now your ready to execute the app.
+We recommend the binary zip archive of Maven to be downloaded. Once you have downloaded it and unziped it, keep it in a safe place where you know you won't accidently delete it and add the Maven files to yout Path variable. This might sound difficult but it is not, you just have yo navigate (through the windows explorer) to the bin folder inside the files you have just downloaded. Copy the path of this folder by clicking in the navigation bar located in the upper part of the window, right click, and copy.
+
+Now go to Control Panel > System and Security > system and in the left side of the window click on Advanced system settings. Once there, click on **Environment Variables** and, in your user variables, scroll down to Path. Select it and click on edit, then new, paste the path you have just copied in the textfield and save your changes. Now you are ready to execute the app.
+
 Go to the path where you have cloned or downloaded our repository, and execute:
 ```sh
 mvn package
@@ -21,18 +23,20 @@ As everything in Linux, installing Maven is so easy, just issue the following co
 ```sh
 sudo apt-get install maven
 ```
-Keep in mind that the package manager (apt in this case) may differ from yours depending on your Linux distro, so you should know your package manager.
+*Keep in mind that the package manager (apt in this case) may differ from yours depending on your Linux distro, so you should know your package manager.*
 
 
 ## Preparing the repository files
 First of all is generating the .jar file, for that just use the following command that will clean the target folder (if exists), compile the source code, compile the tests, execute the test and build the .jar that holds the application itself.
-Now you are one step further to execute the application, you just have to move the .jar created file from /target to the folder where the src folder is, yo do that:
+
 ```sh
 mvn package
 ```
-Now you have to move the .jar file a level up, to do so just use this command:
 
-### Windows
+Now you are one step further to execute the application, you just have to move the .jar created file from the target folder one level up, to do that:
+
+
+### In Windows
 ```sh
 cd target
 
@@ -42,7 +46,7 @@ cd ..
 ```
 
 
-### Linux
+### In Linux
 ```sh
 cd target
 
@@ -57,6 +61,7 @@ To use the application once you have done the setup, just put the excel file tha
 java -jar Loader_i31a-x.x.jar your-excel-file.xlsx
 ```
 So now you have the application working, congratulations and enjoy it!
+
 *Note: the x.x references the release version that you are downloading*
 
 
