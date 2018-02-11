@@ -39,10 +39,10 @@ public class CitizenDaoImplMongo implements AgentDao {
 	 */
 	@SuppressWarnings("deprecation")
 	public CitizenDaoImplMongo() {
-
+		this.reporter = new WriteReportDefault();
 		if (loadProperties()) {
 
-			this.reporter = new WriteReportDefault();
+			
 //			this.mongo = new MongoClient(properties.getProperty("host"),
 //					Integer.parseInt(properties.getProperty("port")));
 			this.mongo = new MongoClient(
