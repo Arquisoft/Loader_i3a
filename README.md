@@ -8,7 +8,8 @@
 This program is almost ready to use, but first of all, you need to download [Maven](https://maven.apache.org/).
 ## Downloading and installing Maven
 ### Windows
-Download Maven from this [link](https://maven.apache.org/download.cgi)
+Download Maven from this [link](https://maven.apache.org/download.cgi).
+
 We recommend the binary zip archive of Maven to be downloaded. Once you have downloaded it and unziped it, keep it in a safe place where you know you won't accidently delete it and add the Maven files to yout Path variable. This might sound difficult but it is not, you just have yo navigate (through the windows explorer) to the bin folder inside the files you have just downloaded. Copy the path of this folder by clicking in the navigation bar located in the upper part of the window, right click, and copy.
 
 Now go to Control Panel > System and Security > system and in the left side of the window click on Advanced system settings. Once there, click on **Environment Variables** and, in your user variables, scroll down to Path. Select it and click on edit, then new, paste the path you have just copied in the textfield and save your changes. Now you are ready to execute the app.
