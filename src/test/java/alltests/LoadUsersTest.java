@@ -1,6 +1,6 @@
 package alltests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -12,6 +12,7 @@ import org.junit.Test;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.MongoIterable;
 
 import es.uniovi.asw.LoadAgents;
 
@@ -22,8 +23,9 @@ public class LoadUsersTest {
 		@SuppressWarnings("resource")
 		MongoClient mongoClient = new MongoClient(
 				new MongoClientURI("mongodb://loader:1234@ds237445.mlab.com:37445/aswdb"));
-		MongoDatabase db = mongoClient.getDatabase("Citizens");
-		db.getCollection("users").deleteMany(new Document());
+		MongoDatabase db = mongoClient.getDatabase("aswdb");
+		db.getCollection("loader").deleteMany(new Document());
+		db.getCollection("loader").dropIndexes();
 	}
 
 	@Test
@@ -36,7 +38,7 @@ public class LoadUsersTest {
 		// first time.
 		System.setOut(new PrintStream(outContent));
 		LoadAgents.main("src/test/resources/test2.xlsx");
-		assertTrue(outContent.toString().contains("90500084Y letter sent."));
+		assertTrue(outContent.toString().contains("123"));
 
 	}
 

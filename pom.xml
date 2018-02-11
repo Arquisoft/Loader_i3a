@@ -2,11 +2,11 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>es.uniovi.asw</groupId>
-	<artifactId>citizensLoader_i3b</artifactId>
-	<version>0.0.1</version>
-	<name>citizensLoader_i3b</name>
+	<artifactId>Loader_i3a</artifactId>
+	<version>0.1</version>
+	<name>Loader_i3a</name>
 	<packaging>jar</packaging>
-	<description>Citizens SubSystem</description>
+	<description>Agents SubSystem</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -104,7 +104,14 @@
 			<artifactId>itextpdf</artifactId>
 			<version>5.5.10</version>
 		</dependency>
+		
+		<dependency>
+	    	<groupId>com.github.computer-engineering-uniovi</groupId>
+		    <artifactId>swift</artifactId>
+		    <version>1.1.1-candidate</version>
+		</dependency>
 	</dependencies>
+	
 	<!--Build plugins -->
 	<build>
 		<sourceDirectory>src/main/java</sourceDirectory>
@@ -169,7 +176,7 @@
 					<!-- MainClass in mainfest make a executable jar -->
 					<archive>
 						<manifest>
-							<mainClass>es.uniovi.asw.LoadUsers</mainClass>
+							<mainClass>es.uniovi.asw.LoadAgents</mainClass>
 						</manifest>
 					</archive>
 
@@ -288,6 +295,13 @@
 			</plugin>
 		</plugins>
 	</reporting>
+	
+	<repositories>
+		<repository>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+		</repository>
+	</repositories>
 
 	<!--Project Management -->
 	<licenses>
@@ -314,6 +328,58 @@
 			<timezone>2</timezone>
 			<properties />
 		</developer>
+		<developer>
+			<id>acoto</id>
+			<name>Anamaria Cotorei</name>
+			<email>uo251547@uniovi.es</email>
+			<organization>WESO-University of Oviedo</organization>
+			<organizationUrl>http://www.uniovi.es</organizationUrl>
+			<roles>
+				<role>Project Developer</role>
+				<role>Developer</role>
+			</roles>
+			<timezone>2</timezone>
+			<properties />
+		</developer>
+		<developer>
+			<id>eleallegue</id>
+			<name>Elena Allegue González</name>
+			<email>uo250878@uniovi.es</email>
+			<organization>WESO-University of Oviedo</organization>
+			<organizationUrl>http://www.uniovi.es</organizationUrl>
+			<roles>
+				<role>Project Developer</role>
+				<role>Developer</role>
+			</roles>
+			<timezone>2</timezone>
+			<properties />
+		</developer>
+		<developer>
+			<id>cristinavn</id>
+			<name>Cristina Vena Naredo</name>
+			<email>uo251104@uniovi.es</email>
+			<organization>WESO-University of Oviedo</organization>
+			<organizationUrl>http://www.uniovi.es</organizationUrl>
+			<roles>
+				<role>Project Developer</role>
+				<role>Developer</role>
+			</roles>
+			<timezone>2</timezone>
+			<properties />
+		</developer>
+		<developer>
+			<id>marcosalvg</id>
+			<name>Marcos Álvarez García</name>
+			<email>uo251182@uniovi.es</email>
+			<organization>WESO-University of Oviedo</organization>
+			<organizationUrl>http://www.uniovi.es</organizationUrl>
+			<roles>
+				<role>Project Developer</role>
+				<role>Developer</role>
+			</roles>
+			<timezone>2</timezone>
+			<properties />
+		</developer>
 	</developers>
 
 
@@ -321,4 +387,5 @@
 		<name>University of Oviedo</name>
 		<url>http://www.uniovi.es</url>
 	</organization>
+	<url>https://github.com/Arquisoft/Loader_i3a</url>
 </project>

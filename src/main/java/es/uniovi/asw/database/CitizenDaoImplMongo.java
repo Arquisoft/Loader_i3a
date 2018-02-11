@@ -108,7 +108,7 @@ public class CitizenDaoImplMongo implements AgentDao {
 		document.put("email", c.getEmail());
 		document.put("id", c.getID());
 		document.put("password", c.getPassword());
-		document.put("kind", c.getKind());
+		document.put("kind", c.getKindCode());
 		try {
 			users.insert(document);
 			reporter.logDatabaseInsertion(c);
