@@ -33,6 +33,9 @@ public class TxtReadList extends AbstractReadList {
 				String[] split = strLine.split(";");
 				if (split.length == cols) {
 					if (split[0].equals("")) {
+						if(split[0].split(" ").length == 1){
+							wReport.report("Not surname given on row number " + r, ruta);
+						}
 						wReport.report("Null name on row number " + r, ruta);
 					} else if (split[3].equals("")) {
 						wReport.report("Null address on row number " + r, ruta);

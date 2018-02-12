@@ -1,1 +1,1 @@
-Adrian Garcia;40.5N30.6W;testemail@uniovi.es;1234;1
+Adrian Garcia;40.5N30.6W;1234;1

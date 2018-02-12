@@ -1,2 +1,2 @@
-Juan Franciso;40.5N30.6W;testemail@uniovi.es;1234;1
+Juan Franciso;testemail@uniovi.es;1234;1
 Roberto Redondo;40.5N30.6W;testemail@uniovi.es;1234;1
