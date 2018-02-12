@@ -5,11 +5,7 @@ import java.util.NoSuchElementException;
 import Foundation.CSVFile;
 import Foundation.URL;
 
-/**
- * @author Ana There are different kind of agents:physical people, entities,
- *         sensors, etc. Each type of user will be identified by a keyword like:
- *         "Person", "Entity", "Sensor"
- */
+
 public class Agent {
 	private String name; // in the case of a person, it will contain both first and last name)
 	private String location;

@@ -5,10 +5,7 @@ import es.uniovi.asw.parser.lettergenerators.WordLetterGenerator;
 import es.uniovi.asw.parser.readers.ExcelReadList;
 import es.uniovi.asw.parser.readers.TxtReadList;
 
-/**
- * @author uo245303
- * Parser Manager
- */
+
 public class SingletonParser {
 	private static SingletonParser instance;
 	private ExcelReadList excelRL;

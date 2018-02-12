@@ -16,7 +16,7 @@ import com.mongodb.client.MongoIterable;
 
 import es.uniovi.asw.LoadAgents;
 
-public class LoadUsersTest {
+public class LoadAgentsTest {
 
 	@Before
 	public void clearDatabase() {

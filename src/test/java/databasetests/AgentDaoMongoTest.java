@@ -14,10 +14,10 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import es.uniovi.asw.database.AgentDao;
-import es.uniovi.asw.database.CitizenDaoImplMongo;
+import es.uniovi.asw.database.AgentDaoImplMongo;
 import es.uniovi.asw.parser.Agent;
 
-public class CitizenDaoMongoTest {
+public class AgentDaoMongoTest {
 
 	private Agent dummy;
 	private Agent dummy1;
@@ -26,7 +26,7 @@ public class CitizenDaoMongoTest {
 
 	@BeforeClass
 	public static void setUp() {
-		dao = new CitizenDaoImplMongo(/*"localhost", 27017, "test", "test"*/);
+		dao = new AgentDaoImplMongo(/*"localhost", 27017, "test", "test"*/);
 		dao.cleanDatabase();
 	}
 

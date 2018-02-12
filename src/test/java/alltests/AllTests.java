@@ -10,7 +10,7 @@ import parsertests.AllParserTests;
 
 @RunWith(Suite.class)
 @SuiteClasses({ AllDatabaseTests.class, AllGeneratorTests.class,
-		AllParserTests.class, LoadUsersTest.class })
+		AllParserTests.class, LoadAgentsTest.class })
 
 public class AllTests {
 

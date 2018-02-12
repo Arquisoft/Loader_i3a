@@ -14,9 +14,6 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import es.uniovi.asw.parser.Agent;
 import es.uniovi.asw.parser.lettergenerators.LetterGenerator;
 
-/**
- * @author Oriol. Excel parser.
- */
 public class ExcelReadList extends AbstractReadList {
 
 	public ExcelReadList() {

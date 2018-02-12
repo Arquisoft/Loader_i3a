@@ -7,7 +7,7 @@ import org.junit.Test;
 
 import es.uniovi.asw.parser.Agent;
 
-public class CitizenTest {
+public class AgentTest {
 
 	@Test
 	public void testEquals() {

@@ -13,7 +13,7 @@ public class WordLetterGenerator implements LetterGenerator {
 	
 	/** 
 	 * Generates a new word document into which it writes
-	 * the data of a given citizen.
+	 * the data of a given agent.
 	 */
 	@Override
 	public void generatePersonalLetter(Agent c) {

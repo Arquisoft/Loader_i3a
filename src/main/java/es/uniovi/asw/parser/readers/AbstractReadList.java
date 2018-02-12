@@ -12,10 +12,7 @@ import es.uniovi.asw.parser.parserutil.PasswordGenerator;
 import es.uniovi.asw.reportwriter.WriteReport;
 import es.uniovi.asw.reportwriter.WriteReportDefault;
 
-/**
- * @author Oriol Template, concrete parsers (Excel/Word/txt/...) will override
- *         "doParse".
- */
+
 public abstract class AbstractReadList implements ReadList {
 
 	protected Set<Agent> census;
@@ -39,13 +36,13 @@ public abstract class AbstractReadList implements ReadList {
 
 		if (census != null && census.size() > 0) {
 			PasswordGenerator.createPasswords(census);
-			insertCitizens(census);
+			insertAgents(census);
 		}
 		return census;
 	}
 
-	private void insertCitizens(Set<Agent> census) {
-		AgentDao dao = MongoPersistanceFactory.getCitizenDao();
+	private void insertAgents(Set<Agent> census) {
+		AgentDao dao = MongoPersistanceFactory.getAgentDao();
 		for (Agent c : census) {
 			if (dao.insert(c)) {
 				letterGen.generatePersonalLetter(c);

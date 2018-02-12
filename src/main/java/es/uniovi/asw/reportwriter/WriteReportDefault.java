@@ -10,15 +10,6 @@ import java.util.Locale;
 
 import org.apache.log4j.Logger;
 
-/**
- * 
- * WriteReport implementation. Detected errors during the parsing of the Excel
- * file or the database access are stores in a log file. This log file is
- * generated daily. The name of the file is the same as the date of generation.
- * 
- * @author Gonzalo de la Cruz Fernández - UO244583
- *
- */
 public class WriteReportDefault implements WriteReport {
 
 	private File file;

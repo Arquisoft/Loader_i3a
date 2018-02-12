@@ -25,7 +25,7 @@ import es.uniovi.asw.reportwriter.WriteReportDefault;
  * @author Gonzalo de la Cruz Fernández - UO244583
  *
  */
-public class CitizenDaoImplMongo implements AgentDao {
+public class AgentDaoImplMongo implements AgentDao {
 
 	private MongoClient mongo;
 	private DB db;
@@ -38,7 +38,7 @@ public class CitizenDaoImplMongo implements AgentDao {
 	 * specified above
 	 */
 	@SuppressWarnings("deprecation")
-	public CitizenDaoImplMongo() {
+	public AgentDaoImplMongo() {
 		this.reporter = new WriteReportDefault();
 		if (loadProperties()) {
 
@@ -81,7 +81,7 @@ public class CitizenDaoImplMongo implements AgentDao {
 	 * @param collection
 	 */
 	@SuppressWarnings("deprecation")
-	public CitizenDaoImplMongo(String host, int port, String database, String collection) {
+	public AgentDaoImplMongo(String host, int port, String database, String collection) {
 		this();
 		this.reporter = new WriteReportDefault();
 		//this.mongo = new MongoClient(host, port);
