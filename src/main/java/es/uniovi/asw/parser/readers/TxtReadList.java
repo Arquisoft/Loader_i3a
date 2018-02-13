@@ -34,19 +34,19 @@ public class TxtReadList extends AbstractReadList {
 				if (split.length == cols) {
 					if (split[0].equals("")) {
 						if(split[0].split(" ").length == 1){
-							wReport.report("Not surname given on row number " + r, ruta);
+							wReport.report("Not name given on row number " + r, ruta);
 						}
 						wReport.report("Null name on row number " + r, ruta);
+					} else if (split[2].equals("")) {
+						wReport.report("Null email on row number " + r, ruta);
 					} else if (split[3].equals("")) {
-						wReport.report("Null address on row number " + r, ruta);
-					} else if (split[1].equals("")) {
-						wReport.report("Null last name on row number " + r, ruta);
-					} else if (split[4].equals("")) {
 						wReport.report("Null ID on row number " + r, ruta);
+					} else if (split[4].equals("")) {
+						wReport.report("Null kind's code on row number " + r, ruta);
 					} else {
 						Agent cit = new Agent(split);
 						if (census.contains(cit)) {
-							wReport.report("Duplicated citizen on row number " + r, ruta);
+							wReport.report("Duplicated agent on row number " + r, ruta);
 						} else {
 							census.add(cit);
 						}
