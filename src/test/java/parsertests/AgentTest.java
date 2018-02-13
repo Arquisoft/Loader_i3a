@@ -31,5 +31,37 @@ public class AgentTest {
 		assertFalse(dummy.equals(doub));
 		assertTrue(dummy4.equals(dummy5));
 	}
+	
+	@Test
+	public void testKindCode(){
+		Agent agent;
+		try{
+			agent = new Agent("Juan Alvarez", "juan@gmail.com", "23568974K", 4);
+		}catch(IllegalArgumentException e){
+			assertTrue(e.getMessage().equals("That kind code number does not exist"));
+		}
+		
+		try{
+			agent = new Agent("Pepito Perez", "pepito@gmail.com", "58963214L", -1);
+		}catch(IllegalArgumentException e){
+			assertTrue(e.getMessage().equals("That kind code number does not exist"));
+		}
+	}
+	
+	@Test
+	public void testEmptyID(){
+		Agent agent;
+		try{
+			agent = new Agent("Juan Alvarez", "juan@gmail.com", "", 2);
+		}catch(IllegalArgumentException e){
+			assertTrue(e.getMessage().equals("The ID cannot be empty"));
+		}
+		
+		try{
+			agent = new Agent("Pepito Perez", "pepito@gmail.com", null, 1);
+		}catch(IllegalArgumentException e){
+			assertTrue(e.getMessage().equals("The ID cannot be null"));
+		}
+	}
 
 }
