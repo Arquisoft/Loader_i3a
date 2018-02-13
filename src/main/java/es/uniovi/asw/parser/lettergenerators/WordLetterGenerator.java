@@ -45,6 +45,8 @@ public class WordLetterGenerator implements LetterGenerator {
 			document.write(out);
 			out.close();
 			document.close();
+			
+			System.out.println(c.getID() + " letter sent.");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

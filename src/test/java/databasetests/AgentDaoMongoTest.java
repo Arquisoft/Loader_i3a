@@ -26,7 +26,7 @@ public class AgentDaoMongoTest {
 
 	@BeforeClass
 	public static void setUp() {
-		dao = new AgentDaoImplMongo(/*"localhost", 27017, "test", "test"*/);
+		dao = new AgentDaoImplMongo();
 		dao.cleanDatabase();
 	}
 
@@ -76,9 +76,10 @@ public class AgentDaoMongoTest {
 
 	@Test
 	public void testFindById() {
-		dao.insert(dummy); //id = 1
+		dao.insert(dummy); // id = 1
 
-		Agent c = dao.findById("0"); //The db does not contain anyone with this id
+		Agent c = dao.findById("0"); // The db does not contain anyone with this
+										// id
 
 		assertNull(c);
 
@@ -97,7 +98,7 @@ public class AgentDaoMongoTest {
 
 		assertEquals(citizens.size(), 3);
 
-		dao.remove("0"); //Does not delete anything
+		dao.remove("0"); // Does not delete anything
 
 		assertTrue(citizens.contains(dummy));
 		assertTrue(citizens.contains(dummy1));

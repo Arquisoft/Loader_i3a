@@ -15,7 +15,7 @@ public class WordGeneratorTest {
 	@Test
 	public void test() {
 		WordLetterGenerator wordg = new WordLetterGenerator();
-		Agent c = new Agent("adri", "mc", "zoo@snek.com", "132456789", 1);
+		Agent c = new Agent("Jose Fernandez", "jose@gmail.com", "59842315J", 1);
 		wordg.generatePersonalLetter(c);
 		File f = new File(c.getID() + ".docx");
 		assertTrue(f.exists());

@@ -49,7 +49,7 @@ public class PDFLetterGenerator implements LetterGenerator {
 			// close
 			document.close();
 
-			System.out.println(c.getID() + "letter sent.");
+			System.out.println(c.getID() + " letter sent.");
 
 		} catch (FileNotFoundException | DocumentException e) {
 			e.printStackTrace();

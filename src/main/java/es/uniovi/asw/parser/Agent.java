@@ -5,52 +5,66 @@ import java.util.NoSuchElementException;
 import Foundation.CSVFile;
 import Foundation.URL;
 
-
 public class Agent {
-	private String name; // in the case of a person, it will contain both first and last name)
+	private String name; // in the case of a person, it will contain both first
+							// and last name)
 	private String location;
 	private String email;
 	private String ID;
 	private String password;
 	private int kindCode;
-	private String kind;
 	private static final String KIND_NOT_FOUND = "KIND NOT FOUND";
 
 	public Agent(String name, String location, String email, String ID, int kind) {
-
-		this.name = name;
+		this(name, email, ID, kind);
 		setLocation(location);
-		this.email = email;
-		this.ID = ID;
-		this.kindCode = kind;
 	}
 
-	public Agent(String name, String location, String email, String ID, int kind,String pass) {
-
-		this(name,location,email,ID,kind);
+	public Agent(String name, String location, String email, String ID, int kind, String pass) {
+		this(name, location, email, ID, kind);
 		this.password = pass;
 	}
 
 	public Agent(String name, String email, String ID, int kind) {
-
 		this.name = name;
 		setLocation(null);// no location
 		this.email = email;
 		this.ID = ID;
 		this.kindCode = kind;
+		checkCorrectKind();
+		checkCorrectID();
 	}
 
 	public Agent(String[] data) {
 		this.name = data[0];
+		setLocation(data[1]);// no location
 		this.email = data[2];
-		setLocation(data[1]);
 		this.ID = data[3];
 		Double k = Double.parseDouble(data[4]);
 		this.kindCode = k.intValue();
-
+		checkCorrectKind();
+		checkCorrectID();
 	}
-	
 
+	/**
+	 * This method checks if the ID inserted is valid or not
+	 */
+	private void checkCorrectID() {
+		if (this.ID == null) {
+			throw new IllegalArgumentException("The ID cannot be null");
+		} else if (this.ID.isEmpty()) {
+			throw new IllegalArgumentException("The ID cannot be empty");
+		}
+	}
+
+	/**
+	 * This method checks if the number inserted by the user are correct or not
+	 */
+	private void checkCorrectKind() {
+		if (getKind() == KIND_NOT_FOUND) {
+			throw new IllegalArgumentException("That kind code number does not exist");
+		}
+	}
 
 	public String getName() {
 		return name;
@@ -107,7 +121,7 @@ public class Agent {
 
 	@Override
 	public String toString() {
-		return "Agent [name=" + name + ", location=" + location + ",  email=" + email + ", ID=" + ID + ", kind="
+		return "Agent [name=" + name + ", location=" + location + ",  email=" + email + ", ID=" + ID + ", kindCode="
 				+ kindCode + "]";
 	}
 
@@ -118,16 +132,14 @@ public class Agent {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	public String getKind() {
-	    try {
-	        return CSVFile.of( new URL( "src/main/resources/master.csv" ), ",", "id", "kind" )
-		    .getRows().stream()
-		    .filter( r -> r.getColumn( "id" ).equals( Integer.toString( kindCode ) ) )
-		    .findAny().get().getColumn( "kind" );
-	    } catch (NoSuchElementException e) {
-	        return KIND_NOT_FOUND;
-	    }
-	}
 
+	public String getKind() {
+		try {
+			return CSVFile.of(new URL("src/main/resources/master.csv"), ",", "id", "kind").getRows().stream()
+					.filter(r -> r.getColumn("id").equals(Integer.toString(kindCode))).findAny().get()
+					.getColumn("kind");
+		} catch (NoSuchElementException e) {
+			return KIND_NOT_FOUND;
+		}
+	}
 }
