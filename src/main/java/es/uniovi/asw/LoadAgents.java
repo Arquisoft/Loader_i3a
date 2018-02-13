@@ -22,24 +22,25 @@ public class LoadAgents {
 			return;
 		}
 
-		String filename = ruta[0];
 		ReadList rl = null;
-		if (filename.length() > 4) {// .xlsx || .txt
-			String extension = filename.substring(filename.length()-4);
+		String[] parts = ruta[0].split("/");
+		String filename = parts[parts.length - 1];
+		String[] fileParts = filename.split("\\.");
+		if (fileParts.length == 2) {// .xlsx || .txt
+			String extension = fileParts[1];
 			if (extension.equalsIgnoreCase("xlsx")) {
 				rl = SingletonParser.getInstance().getDefaultExcelReadList();
-			} else if (extension.equalsIgnoreCase(".txt")) {
+			} else if (extension.equalsIgnoreCase("txt")) {
 				rl = SingletonParser.getInstance().getDefaultTxtReadList();
-			}else{
+			} else {
 				System.err.println("That file extension cannot be read.");
 				return;
 			}
-		}else{
+		}else {
 			System.err.println("The file extension is missing.");
 			return;
 		}
 		rl.parse(ruta[0]);
-
 	}
 
 }
