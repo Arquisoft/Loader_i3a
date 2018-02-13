@@ -1,6 +1,6 @@
 package parsertests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -38,8 +38,8 @@ public class TxtParseTest {
 	@Test
 	public void testParse() {
 		clearDatabase();
-		String resultSt = "[Agent [name=adri miron, location=40.5N30.6W,  email=testemail@uniovi.es, ID=1234, kind=1]]";
-		String resultTravis = "[Agent [name=adri miron, location=40.5N30.6W,  email=testemail@uniovi.es, ID=1234, kind=1]]";
+		String resultSt = "[Agent [name=adri miron, location=40.5N30.6W,  email=testemail@uniovi.es, ID=1234, kindCode=1]]";
+		String resultTravis = "[Agent [name=adri miron, location=40.5N30.6W,  email=testemail@uniovi.es, ID=1234, kindCode=1]]";
 		ReadList rl = new TxtReadList();
 		readData = rl.parse("src/test/resources/test.txt");
 		assertTrue(readData.toString().equals(resultSt) || readData.toString().equals(resultTravis));
