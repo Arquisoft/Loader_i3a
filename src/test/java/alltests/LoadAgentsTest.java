@@ -39,7 +39,13 @@ public class LoadAgentsTest {
 		System.setOut(new PrintStream(outContent));
 		LoadAgents.main("src/test/resources/test2.xlsx");
 		assertTrue(outContent.toString().contains("123"));
-
+		
+		outContent = new ByteArrayOutputStream();
+		// Tests how the data is inserted correctly into the database for the
+		// first time.
+		System.setOut(new PrintStream(outContent));
+		LoadAgents.main("src/test/resources/test2.txt");
+		assertTrue(outContent.toString().contains("1234"));
 	}
 
 	@Test
@@ -48,6 +54,22 @@ public class LoadAgentsTest {
 		System.setErr(new PrintStream(outContent));
 		LoadAgents.main();
 		assertTrue(outContent.toString().contains("Input the name of the file."));
+	}
+	
+	@Test
+	public void testNoExtensionError() {
+		ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+		System.setErr(new PrintStream(outContent));
+		LoadAgents.main("src/test/resources/test2");
+		assertTrue(outContent.toString().contains("The file extension is missing."));
+	}
+	
+	@Test
+	public void testNotCorrectExtensionError() {
+		ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+		System.setErr(new PrintStream(outContent));
+		LoadAgents.main("src/test/resources/test2.doc");
+		assertTrue(outContent.toString().contains("That file extension cannot be read."));
 	}
 
 }
