@@ -23,14 +23,22 @@ public class LoadAgents {
 		}
 
 		String[] parts = ruta[0].split(".");
-		ReadList rl =  SingletonParser.getInstance().getDefaultExcelReadList();
-		ReadList rlT =  SingletonParser.getInstance().getDefaultTxtReadList();
-		if (parts[parts.length - 1].equalsIgnoreCase("xlsx")) {
-			rl.parse(ruta[0]);
-		} else if (parts[parts.length - 1].equalsIgnoreCase("txt")) {
-			rlT.parse(ruta[0]);
+		if (parts.length > 1) {
+			ReadList rl = SingletonParser.getInstance().getDefaultExcelReadList();
+			ReadList rlT = SingletonParser.getInstance().getDefaultTxtReadList();
+			if (parts[parts.length - 1].equalsIgnoreCase("xlsx")) {
+				rl.parse(ruta[0]);
+			} else if (parts[parts.length - 1].equalsIgnoreCase("txt")) {
+				rlT.parse(ruta[0]);
+			}else{
+				System.err.println("That file extension cannot be read.");
+				return;
+			}
+		}else{
+			System.err.println("The file extension is missing.");
+			return;
 		}
-		
+
 	}
 
 }
