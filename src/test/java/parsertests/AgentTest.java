@@ -11,7 +11,7 @@ public class AgentTest {
 
 	@Test
 	public void testEquals() {
-		Agent dummy = new Agent("a","30N50.5E", "b@a.com", "132456789", 1);
+		Agent dummy = new Agent("a", "30N50.5E", "b@a.com", "132456789", 1);
 		Agent dummy1 = new Agent("a", "30N50.5E", "b@a.com", "132456789", 1);
 		Agent dummy2 = new Agent("a", "b@a.com", "132456789", 2);
 		Agent dummy3 = null;
@@ -19,10 +19,6 @@ public class AgentTest {
 		Agent dummy5 = new Agent("b", "c", "b@a.com", "1324567239", 2);
 		Double doub = new Double(5.0);
 
-		System.out.println(dummy2.hashCode());
-		System.out.println(dummy.hashCode());
-		
-		
 		assertTrue(dummy.equals(dummy));
 		assertTrue(dummy.equals(dummy1));
 		assertFalse(dummy.equals(dummy2));
@@ -31,35 +27,33 @@ public class AgentTest {
 		assertFalse(dummy.equals(doub));
 		assertTrue(dummy4.equals(dummy5));
 	}
-	
+
 	@Test
-	public void testKindCode(){
-		Agent agent;
-		try{
-			agent = new Agent("Juan Alvarez", "juan@gmail.com", "23568974K", 4);
-		}catch(IllegalArgumentException e){
+	public void testKindCode() {
+		try {
+			new Agent("Juan Alvarez", "juan@gmail.com", "23568974K", 4);
+		} catch (IllegalArgumentException e) {
 			assertTrue(e.getMessage().equals("That kind code number does not exist"));
 		}
-		
-		try{
-			agent = new Agent("Pepito Perez", "pepito@gmail.com", "58963214L", -1);
-		}catch(IllegalArgumentException e){
+
+		try {
+			new Agent("Pepito Perez", "pepito@gmail.com", "58963214L", -1);
+		} catch (IllegalArgumentException e) {
 			assertTrue(e.getMessage().equals("That kind code number does not exist"));
 		}
 	}
-	
+
 	@Test
-	public void testEmptyID(){
-		Agent agent;
-		try{
-			agent = new Agent("Juan Alvarez", "juan@gmail.com", "", 2);
-		}catch(IllegalArgumentException e){
+	public void testEmptyID() {
+		try {
+			new Agent("Juan Alvarez", "juan@gmail.com", "", 2);
+		} catch (IllegalArgumentException e) {
 			assertTrue(e.getMessage().equals("The ID cannot be empty"));
 		}
-		
-		try{
-			agent = new Agent("Pepito Perez", "pepito@gmail.com", null, 1);
-		}catch(IllegalArgumentException e){
+
+		try {
+			new Agent("Pepito Perez", "pepito@gmail.com", null, 1);
+		} catch (IllegalArgumentException e) {
 			assertTrue(e.getMessage().equals("The ID cannot be null"));
 		}
 	}
