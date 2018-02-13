@@ -23,13 +23,14 @@ public class LoadAgents {
 		}
 
 		String[] parts = ruta[0].split(".");
-		ReadList rl = null;
+		ReadList rl =  SingletonParser.getInstance().getDefaultExcelReadList();
+		ReadList rlT =  SingletonParser.getInstance().getDefaultTxtReadList();
 		if (parts[parts.length - 1].equalsIgnoreCase("xlsx")) {
-			rl = SingletonParser.getInstance().getDefaultExcelReadList();
+			rl.parse(ruta[0]);
 		} else if (parts[parts.length - 1].equalsIgnoreCase("txt")) {
-			rl = SingletonParser.getInstance().getDefaultTxtReadList();
+			rlT.parse(ruta[0]);
 		}
-		rl.parse(ruta[0]);
+		
 	}
 
 }
