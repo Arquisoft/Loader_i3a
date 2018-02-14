@@ -75,24 +75,6 @@ public class TxtParseTest {
 		File file = new File(filename);
 
 		ReadList rl = new TxtReadList();
-		readData = rl.parse("src/test/resources/test2.txt");
-
-		assertTrue(file.exists());
-		Files.delete(file);
-	}
-
-	@Test
-	/**
-	 * Checks if the report is generated successfully when the txt doesn't have
-	 * surname
-	 *
-	 */
-	public void testNoSurname() {
-		SimpleDateFormat formatofilename = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
-		String filename = formatofilename.format(new Date()) + ".txt";
-		File file = new File(filename);
-
-		ReadList rl = new TxtReadList();
 		readData = rl.parse("src/test/resources/test4.txt");
 
 		assertTrue(file.exists());
@@ -163,7 +145,7 @@ public class TxtParseTest {
 		File file = new File(filename);
 
 		ReadList rl = new TxtReadList();
-		readData = rl.parse("src/test/resources/test9.txt");
+		readData = rl.parse("src/test/resources/test6.txt");
 
 		assertTrue(file.exists());
 		Files.delete(file);

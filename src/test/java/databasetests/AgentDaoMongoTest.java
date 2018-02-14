@@ -103,7 +103,7 @@ public class AgentDaoMongoTest {
 
 		List<Agent> agents = dao.findAll();
 
-		assertEquals(agents.size(), 3);
+		assertEquals(3, agents.size());
 
 		dao.remove("0"); // Does not delete anything
 
@@ -112,11 +112,13 @@ public class AgentDaoMongoTest {
 		assertTrue(agents.contains(dummy2));
 		assertEquals(agents.size(), 3);
 
+		agents = dao.findAll();
+
 		dao.remove("56897412L");
 
 		agents = dao.findAll();
 
-		assertEquals(agents.size(), 2);
+		assertEquals(2, agents.size());
 
 		assertFalse(agents.contains(dummy));
 		assertTrue(agents.contains(dummy1));
@@ -126,7 +128,7 @@ public class AgentDaoMongoTest {
 
 		agents = dao.findAll();
 
-		assertEquals(agents.size(), 1);
+		assertEquals(1, agents.size());
 
 		assertFalse(agents.contains(dummy));
 		assertFalse(agents.contains(dummy1));
