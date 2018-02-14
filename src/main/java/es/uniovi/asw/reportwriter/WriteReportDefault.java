@@ -13,10 +13,8 @@ import org.apache.log4j.Logger;
 public class WriteReportDefault implements WriteReport {
 
 	private File file;
-	private SimpleDateFormat filenameFormat = new SimpleDateFormat("dd-MM-yyyy",
-			Locale.getDefault());
-	private SimpleDateFormat reportHourFormat = new SimpleDateFormat(
-			"dd-MM-yyyy HH:mm:ss", Locale.getDefault());
+	private SimpleDateFormat filenameFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());;
+	private SimpleDateFormat reportHourFormat;
 
 	private Logger log = Logger.getRootLogger();
 
@@ -59,14 +57,14 @@ public class WriteReportDefault implements WriteReport {
 	 */
 	public void report(String errorMessage, String file) {
 		try {
-			BufferedWriter writer = new BufferedWriter(new FileWriter(this.file,
-					true));
+			BufferedWriter writer = new BufferedWriter(new FileWriter(this.file, true));
+
+			reportHourFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault());
 
 			StringBuilder error = new StringBuilder();
 			error.append("ERROR \n");
 			error.append("------------------------------\n");
-			error.append("Date and hour: " + reportHourFormat.format(new Date())
-					+ "\n");
+			error.append("Date and hour: " + reportHourFormat.format(new Date()) + "\n");
 			error.append("Filename: " + file + "\n");
 			error.append("Error: " + errorMessage + "\n\n");
 
@@ -94,15 +92,15 @@ public class WriteReportDefault implements WriteReport {
 	public void report(Exception e, String errorMessage) {
 		try {
 
-			BufferedWriter writer = new BufferedWriter(new FileWriter(file,
-					true));
+			BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
+
+			reportHourFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault());
 
 			StringBuilder error = new StringBuilder();
 
 			error.append("ERROR \n");
 			error.append("------------------------------\n");
-			error.append("Date and hour: " + reportHourFormat.format(new Date())
-					+ "\n");
+			error.append("Date and hour: " + reportHourFormat.format(new Date()) + "\n");
 			error.append("Error: " + errorMessage + "\n");
 			error.append("Message exception: " + e.getMessage() + "\n\n");
 

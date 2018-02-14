@@ -42,11 +42,7 @@ public class AgentDaoImplMongo implements AgentDao {
 		this.reporter = new WriteReportDefault();
 		if (loadProperties()) {
 
-			
-//			this.mongo = new MongoClient(properties.getProperty("host"),
-//					Integer.parseInt(properties.getProperty("port")));
-			this.mongo = new MongoClient(
-					new MongoClientURI("mongodb://loader:1234@ds237445.mlab.com:37445/aswdb"));
+			this.mongo = new MongoClient(new MongoClientURI("mongodb://loader:1234@ds237445.mlab.com:37445/aswdb"));
 			this.db = mongo.getDB(properties.getProperty("database"));
 			this.users = db.getCollection(properties.getProperty("collection"));
 
@@ -84,7 +80,6 @@ public class AgentDaoImplMongo implements AgentDao {
 	public AgentDaoImplMongo(String host, int port, String database, String collection) {
 		this();
 		this.reporter = new WriteReportDefault();
-		//this.mongo = new MongoClient(host, port);
 		this.db = mongo.getDB(database);
 		this.users = db.getCollection(collection);
 
@@ -92,12 +87,9 @@ public class AgentDaoImplMongo implements AgentDao {
 	}
 
 	/**
-	 * 
 	 * @param c
-	 * 
-	 *            Inserts a new document into the database with the citizen passed
+	 *            Inserts a new document into the database with the agent passed
 	 *            as a parameter.
-	 * 
 	 */
 
 	@Override
@@ -123,11 +115,9 @@ public class AgentDaoImplMongo implements AgentDao {
 	}
 
 	/**
-	 * 
 	 * @param ID
 	 * 
 	 *            Removes a document from the database.
-	 * 
 	 */
 
 	@Override
@@ -138,12 +128,9 @@ public class AgentDaoImplMongo implements AgentDao {
 	}
 
 	/**
-	 * 
 	 * @param ID
-	 * 
-	 *            Returns a document (citizen) from the database corresponding to
+	 *            Returns a document (agent) from the database corresponding to
 	 *            the id passed as a parameter.
-	 * 
 	 */
 
 	@Override
@@ -154,44 +141,74 @@ public class AgentDaoImplMongo implements AgentDao {
 		Agent c = null;
 		while (cursor.hasNext()) {
 			DBObject user = cursor.next();
-			c = new Agent((String) user.get("name"), (String) user.get("address"), (String) user.get("email"),
+			c = new Agent((String) user.get("name"), (String) user.get("location"), (String) user.get("email"),
 					(String) user.get("id"), (int) user.get("kind"), (String) user.get("password"));
 		}
 		return c;
 	}
 
 	/**
-	 * 
-	 * Returns every document (citizen) in the databse.
-	 * 
+	 * Returns every document (agent) in the databse.
 	 */
 
 	@Override
 	public List<Agent> findAll() {
 
-		List<Agent> allCitizens = new ArrayList<>();
+		List<Agent> allAgents = new ArrayList<>();
 
 		DBCursor cursor = users.find();
 		while (cursor.hasNext()) {
 			DBObject user = cursor.next();
-			Agent c = new Agent((String) user.get("name"), (String) user.get("address"), (String) user.get("email"),
-					(String) user.get("id"), (int) user.get("kind"),(String) user.get("password"));
-			allCitizens.add(c);
+			Agent c = new Agent((String) user.get("name"), (String) user.get("location"), (String) user.get("email"),
+					(String) user.get("id"), (int) user.get("kind"), (String) user.get("password"));
+			allAgents.add(c);
 		}
 
-		return allCitizens;
+		return allAgents;
 	}
 
 	/**
-	 * 
 	 * Clears the database.
-	 * 
 	 */
 
 	@Override
 	public void cleanDatabase() {
 		users.remove(new BasicDBObject());
-
 	}
 
+	@Override
+	public void remove(Agent c) {
+		remove(c.getID());
+	}
+
+	/**
+	 * This method returns all the agents with the kindCode passed as a
+	 * parameter
+	 */
+	@Override
+	public List<Agent> findAllAgentByKindCode(int kind) {
+		List<Agent> allAgents = null;
+		try {
+			new Agent("", "", "666", kind);
+		} catch (IllegalArgumentException e) {
+			return allAgents;
+		} // this checks, if the kind is a valid number, or not
+
+		allAgents = new ArrayList<>();
+
+		DBCursor cursor = users.find();
+		while (cursor.hasNext()) {
+			DBObject user = cursor.next();
+			if ((int) user.get("kind") == kind) {
+				String location = null;
+				if (user.get("location") != null) {
+					location = (String) user.get("location");
+				}
+				Agent c = new Agent((String) user.get("name"), location, (String) user.get("email"),
+						(String) user.get("id"), (int) user.get("kind"), (String) user.get("password"));
+				allAgents.add(c);
+			}
+		}
+		return allAgents;
+	}
 }
