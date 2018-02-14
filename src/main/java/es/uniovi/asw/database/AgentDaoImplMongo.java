@@ -188,21 +188,26 @@ public class AgentDaoImplMongo implements AgentDao {
 	@Override
 	public List<Agent> findAllAgentByKindCode(int kind) {
 
+		List<Agent> allAgents = null;
+
 		try {
-			new Agent("", "", "", kind);
+			new Agent("", "", "666", kind);
 		} catch (IllegalArgumentException e) {
-			return null;
+			return allAgents;
 		} // this checks, if the kind is a valid number, or not
 
-		List<Agent> allAgents = new ArrayList<>();
+		allAgents = new ArrayList<>();
 
 		DBCursor cursor = users.find();
 		while (cursor.hasNext()) {
 			DBObject user = cursor.next();
 			if ((int) user.get("kind") == kind) {
-				Agent c = new Agent((String) user.get("name"), (String) user.get("location"),
-						(String) user.get("email"), (String) user.get("id"), (int) user.get("kind"),
-						(String) user.get("password"));
+				String location = null;
+				if (user.get("location") != null) {
+					location = (String) user.get("location");
+				}
+				Agent c = new Agent((String) user.get("name"), location, (String) user.get("email"),
+						(String) user.get("id"), (int) user.get("kind"), (String) user.get("password"));
 				allAgents.add(c);
 			}
 		}
