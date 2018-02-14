@@ -84,14 +84,13 @@ public class AgentDaoMongoTest {
 
 	@Test
 	public void testFindById() {
-		dao.insert(dummy); // id = 1
+		dao.insert(dummy); // id = 56897412L
 
 		Agent c = dao.findById("0"); // The db does not contain anyone with this
 										// id
-
 		assertNull(c);
 
-		c = dao.findById("1");
+		c = dao.findById("56897412L");
 		assertNotNull(c);
 		assertEquals(dummy, c);
 	}
@@ -130,8 +129,8 @@ public class AgentDaoMongoTest {
 		assertEquals(agents.size(), 1);
 
 		assertFalse(agents.contains(dummy));
-		assertTrue(agents.contains(dummy1));
-		assertFalse(agents.contains(dummy2));
+		assertFalse(agents.contains(dummy1));
+		assertTrue(agents.contains(dummy2));
 
 	}
 
