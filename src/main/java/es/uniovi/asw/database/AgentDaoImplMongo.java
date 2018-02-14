@@ -187,9 +187,7 @@ public class AgentDaoImplMongo implements AgentDao {
 	 */
 	@Override
 	public List<Agent> findAllAgentByKindCode(int kind) {
-
 		List<Agent> allAgents = null;
-
 		try {
 			new Agent("", "", "666", kind);
 		} catch (IllegalArgumentException e) {
