@@ -10,7 +10,7 @@ This program is almost ready to use, but first of all, you need to download [Mav
 ### Windows
 Download Maven from this [link](https://maven.apache.org/download.cgi).
 
-We recommend the binary zip archive of Maven to be downloaded. Once you have downloaded it and unziped it, keep it in a safe place where you know you won't accidently delete it and add the Maven files to yout Path variable. This might sound difficult but it is not, you just have yo navigate (through the windows explorer) to the bin folder inside the files you have just downloaded. Copy the path of this folder by clicking in the navigation bar located in the upper part of the window, right click, and copy.
+We recommend the binary zip archive of Maven to be downloaded. Once you have downloaded it and unziped it, keep it in a safe place where you know you won't accidently delete it and add the Maven files to your Path variable. This might sound difficult but it is not, you just have to navigate (through the windows explorer) to the bin folder inside the files you have just downloaded. Copy the path of this folder by clicking in the navigation bar located in the upper part of the window, right click, and copy.
 
 Now go to Control Panel > System and Security > system and in the left side of the window click on Advanced system settings. Once there, click on **Environment Variables** and, in your user variables, scroll down to Path. Select it and click on edit, then new, paste the path you have just copied in the textfield and save your changes. Now you are ready to execute the app.
 
@@ -41,7 +41,7 @@ Now you are one step further to execute the application, you just have to move t
 ```sh
 cd target
 
-move Loader_i31a-x.x.jar ../
+move Loader_i31a-x.x-with-dependencies.jar ../
 
 cd ..
 ```
