@@ -51,7 +51,7 @@ cd ..
 ```sh
 cd target
 
-mv Loader_i31a-x.x.jar ../
+mv Loader_i31a-x.x-with-dependencies.jar ../
 
 cd ..
 ```
@@ -59,7 +59,7 @@ cd ..
 ## Using the program
 To use the application once you have done the setup, just put the excel file that holds the agents in the same folder where the executable file is and use this command:
 ```sh
-java -jar Loader_i31a-x.x.jar your-excel-file.xlsx
+java -jar Loader_i31a-x.x-with-dependencies.jar your-excel-file.xlsx
 ```
 So now you have the application working, congratulations and enjoy it!
 
