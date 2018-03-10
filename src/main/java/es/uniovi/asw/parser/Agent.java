@@ -12,6 +12,7 @@ public class Agent {
 	private String email;
 	private String ID;
 	private String password;
+	private String passwordNotEncrypted;
 	private int kindCode;
 	private static final String KIND_NOT_FOUND = "KIND NOT FOUND";
 
@@ -131,6 +132,14 @@ public class Agent {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getPasswordNotEncrypted() {
+		return passwordNotEncrypted;
+	}
+
+	public void setPasswordNotEncrypted(String password) {
+		this.passwordNotEncrypted = password;
 	}
 
 	public String getKind() {

@@ -104,14 +104,20 @@
 			<artifactId>itextpdf</artifactId>
 			<version>5.5.10</version>
 		</dependency>
-		
+
 		<dependency>
-	    	<groupId>com.github.computer-engineering-uniovi</groupId>
-		    <artifactId>swift</artifactId>
-		    <version>1.1.1-candidate</version>
+			<groupId>com.github.computer-engineering-uniovi</groupId>
+			<artifactId>swift</artifactId>
+			<version>1.1.1-candidate</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jasypt</groupId>
+			<artifactId>jasypt</artifactId>
+			<version>1.9.2</version>
 		</dependency>
 	</dependencies>
-	
+
 	<!--Build plugins -->
 	<build>
 		<sourceDirectory>src/main/java</sourceDirectory>
@@ -295,11 +301,11 @@
 			</plugin>
 		</plugins>
 	</reporting>
-	
+
 	<repositories>
 		<repository>
-		    <id>jitpack.io</id>
-		    <url>https://jitpack.io</url>
+			<id>jitpack.io</id>
+			<url>https://jitpack.io</url>
 		</repository>
 	</repositories>
 
