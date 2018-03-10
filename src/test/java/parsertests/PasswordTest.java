@@ -7,6 +7,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.jasypt.util.password.StrongPasswordEncryptor;
 import org.junit.Test;
 
 import es.uniovi.asw.parser.Agent;
@@ -41,11 +42,31 @@ public class PasswordTest {
 		assertFalse(c.getPassword() == c2.getPassword());
 		assertFalse(c.getPassword() == c3.getPassword());
 		assertFalse(c.getPassword() == c4.getPassword());
-
 		assertFalse(c2.getPassword() == c3.getPassword());
 		assertFalse(c2.getPassword() == c4.getPassword());
-
 		assertFalse(c3.getPassword() == c4.getPassword());
+
+		assertTrue(c.getPassword() != c.getPasswordNotEncrypted());
+		assertTrue(new StrongPasswordEncryptor().checkPassword(c.getPasswordNotEncrypted(), c.getPassword()));
+
+		assertTrue(c2.getPassword() != c2.getPasswordNotEncrypted());
+		assertTrue(new StrongPasswordEncryptor().checkPassword(c2.getPasswordNotEncrypted(), c2.getPassword()));
+
+		assertTrue(c3.getPassword() != c3.getPasswordNotEncrypted());
+		assertTrue(new StrongPasswordEncryptor().checkPassword(c3.getPasswordNotEncrypted(), c3.getPassword()));
+
+		assertTrue(c4.getPassword() != c4.getPasswordNotEncrypted());
+		assertTrue(new StrongPasswordEncryptor().checkPassword(c4.getPasswordNotEncrypted(), c4.getPassword()));
+
+		assertTrue(c.getPassword() != c2.getPassword());
+		assertFalse(new StrongPasswordEncryptor().checkPassword(c.getPasswordNotEncrypted(), c2.getPassword()));
+		assertFalse(new StrongPasswordEncryptor().checkPassword(c2.getPasswordNotEncrypted(), c.getPassword()));
+
+		assertFalse(new StrongPasswordEncryptor().checkPassword(c2.getPasswordNotEncrypted(), c3.getPassword()));
+		assertFalse(new StrongPasswordEncryptor().checkPassword(c3.getPasswordNotEncrypted(), c2.getPassword()));
+
+		assertFalse(new StrongPasswordEncryptor().checkPassword(c.getPasswordNotEncrypted(), c4.getPassword()));
+		assertFalse(new StrongPasswordEncryptor().checkPassword(c4.getPasswordNotEncrypted(), c.getPassword()));
 	}
 
 }
