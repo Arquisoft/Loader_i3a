@@ -11,6 +11,9 @@ local.properties
 .settings/
 .loadpath
 .recommenders
+*.class
+
+target/
 
 # Eclipse Core
 .project
@@ -48,10 +51,40 @@ local.properties
 # STS (Spring Tool Suite)
 .springBeans
 
-# Compiled class file
-*.class
-
 # Code Recommenders
 .recommenders/
 
 .DS_Store
+
+# User-specific stuff:
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+
+# Sensitive or high-churn files:
+.idea/**/dataSources/
+.idea/**/dataSources.ids
+.idea/**/dataSources.xml
+.idea/**/dataSources.local.xml
+.idea/**/sqlDataSources.xml
+.idea/**/dynamic.xml
+.idea/**/uiDesigner.xml
+
+# Gradle:
+.idea/**/gradle.xml
+.idea/**/libraries
+
+# Mongo Explorer plugin:
+.idea/**/mongoSettings.xml
+
+## File-based project format:
+*.iws
+
+# IntelliJ
+/out/
+
+
+.idea/
+participants0.iml
+participants_i2b.iml
+/.gradle/
+/build/
