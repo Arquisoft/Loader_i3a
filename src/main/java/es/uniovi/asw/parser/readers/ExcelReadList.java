@@ -68,7 +68,6 @@ public class ExcelReadList extends AbstractReadList {
 							wReport.report("Duplicated citizen on row number " + r, ruta);
 						} else {
 							census.add(cit);
-
 						}
 
 					}

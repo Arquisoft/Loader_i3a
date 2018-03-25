@@ -56,11 +56,12 @@ public class Agent {
 		} else if (this.ID.isEmpty()) {
 			throw new IllegalArgumentException("The ID cannot be empty");
 		}
-		String[] parts = this.ID.split("\\.");
-		if (parts.length == 2) {
-			this.ID = parts[0];
+		if (this.ID.contains(".")) {
+			String[] parts = this.ID.split("\\.");
+			if (parts.length == 2) {
+				this.ID = parts[0];
+			}
 		}
-
 	}
 
 	/**

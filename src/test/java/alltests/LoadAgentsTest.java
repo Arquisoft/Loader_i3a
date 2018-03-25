@@ -37,14 +37,7 @@ public class LoadAgentsTest {
 		// first time.
 		System.setOut(new PrintStream(outContent));
 		LoadAgents.main("src/test/resources/test2.xlsx");
-		assertTrue(outContent.toString().contains("123"));
-
-		outContent = new ByteArrayOutputStream();
-		// Tests how the data is inserted correctly into the database for the
-		// first time.
-		System.setOut(new PrintStream(outContent));
-		LoadAgents.main("src/test/resources/test2.txt");
-		assertTrue(outContent.toString().contains("1234"));
+		assertTrue(outContent.toString().contains("juan@example.com"));
 	}
 
 	@Test
