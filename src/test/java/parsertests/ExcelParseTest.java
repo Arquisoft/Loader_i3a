@@ -21,8 +21,8 @@ public class ExcelParseTest {
 
 	@Test
 	public void testParse() {
-		String result = "[Agent [name=Juan Torres Pardo, location=40.5N30.99W,  email=juan@example.com, ID=123.0, kindCode=1]]";
-		String resultForTravis = "[Agent [name=Juan Torres Pardo, location=40.5N30.99W,  email=juan@example.com, ID=123.0, kindCode=1]]";
+		String result = "[Agent [name=Juan Torres Pardo, location=40.5N30.99W,  email=juan@example.com, ID=123, kindCode=1]]";
+		String resultForTravis = "[Agent [name=Juan Torres Pardo, location=40.5N30.99W,  email=juan@example.com, ID=123, kindCode=1]]";
 
 		ReadList rl = new ExcelReadList();
 		readData = rl.parse("src/test/resources/test2.xlsx");
@@ -66,8 +66,7 @@ public class ExcelParseTest {
 	}
 
 	/**
-	 * Checks that the report file is generated when the excel doesn't have a
-	 * name
+	 * Checks that the report file is generated when the excel doesn't have a name
 	 * 
 	 */
 	@Test
@@ -84,8 +83,7 @@ public class ExcelParseTest {
 	}
 
 	/**
-	 * Checks that the report file is generated when the excel doesn't have a
-	 * kind
+	 * Checks that the report file is generated when the excel doesn't have a kind
 	 * 
 	 */
 	@Test
