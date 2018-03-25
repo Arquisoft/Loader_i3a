@@ -9,6 +9,7 @@ import es.uniovi.asw.parser.Agent;
 
 public class AgentTest {
 
+	@SuppressWarnings("unlikely-arg-type")
 	@Test
 	public void testEquals() {
 		Agent dummy = new Agent("a", "30N50.5E", "b@a.com", "132456789", 1);

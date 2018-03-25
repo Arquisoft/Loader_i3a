@@ -12,7 +12,6 @@ import org.junit.Test;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoDatabase;
-import com.mongodb.client.MongoIterable;
 
 import es.uniovi.asw.LoadAgents;
 
@@ -39,7 +38,7 @@ public class LoadAgentsTest {
 		System.setOut(new PrintStream(outContent));
 		LoadAgents.main("src/test/resources/test2.xlsx");
 		assertTrue(outContent.toString().contains("123"));
-		
+
 		outContent = new ByteArrayOutputStream();
 		// Tests how the data is inserted correctly into the database for the
 		// first time.
@@ -55,7 +54,7 @@ public class LoadAgentsTest {
 		LoadAgents.main();
 		assertTrue(outContent.toString().contains("Input the name of the file."));
 	}
-	
+
 	@Test
 	public void testNoExtensionError() {
 		ByteArrayOutputStream outContent = new ByteArrayOutputStream();
@@ -63,7 +62,7 @@ public class LoadAgentsTest {
 		LoadAgents.main("src/test/resources/test2");
 		assertTrue(outContent.toString().contains("The file extension is missing."));
 	}
-	
+
 	@Test
 	public void testNotCorrectExtensionError() {
 		ByteArrayOutputStream outContent = new ByteArrayOutputStream();

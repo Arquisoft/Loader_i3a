@@ -6,7 +6,7 @@ import es.uniovi.asw.parser.SingletonParser;
 /**
  * Main application
  * 
- * @author Labra
+ * @author
  *
  */
 public class LoadAgents {
@@ -36,7 +36,7 @@ public class LoadAgents {
 				System.err.println("That file extension cannot be read.");
 				return;
 			}
-		}else {
+		} else {
 			System.err.println("The file extension is missing.");
 			return;
 		}

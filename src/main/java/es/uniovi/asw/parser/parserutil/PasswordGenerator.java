@@ -21,7 +21,7 @@ public class PasswordGenerator {
 			}
 			c.setPassword(new StrongPasswordEncryptor().encryptPassword(sb.toString()));
 			c.setPasswordNotEncrypted(sb.toString());
+			sb = new StringBuilder(passLength);
 		}
 	}
-
 }
