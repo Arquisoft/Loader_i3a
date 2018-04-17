@@ -16,9 +16,7 @@ import uk.org.lidalia.slf4jtest.TestLogger;
 import uk.org.lidalia.slf4jtest.TestLoggerFactory;
 
 public class ExcelParserTest {
-
-	private static String correctPath = "src/test/resources/test.xlsx";
-	TestLogger logger = TestLoggerFactory.getTestLogger(Logger.class);
+	private TestLogger logger = TestLoggerFactory.getTestLogger(Logger.class);
 
 	@After
 	public void clearLoggers() {
