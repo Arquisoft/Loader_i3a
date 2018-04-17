@@ -6,13 +6,6 @@ public class Logger {
 
 	private static org.slf4j.Logger log = LoggerFactory.getLogger(Logger.class.getName());
 
-	private Logger() {
-	}
-
-	public static org.slf4j.Logger getInstance() {
-		return log;
-	}
-
 	public static void addWarning(String... message) {
 		log.warn(convertIntoASingleString(message));
 	}
@@ -23,6 +16,10 @@ public class Logger {
 
 	public static void addSevere(String... message) {
 		log.error(convertIntoASingleString(message));
+	}
+
+	public static void addInfo(String message, int num) {
+		addInfo(message, String.valueOf(num));
 	}
 
 	public static void addInfo(String... message) {
