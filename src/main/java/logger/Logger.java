@@ -18,6 +18,10 @@ public class Logger {
 		log.error(convertIntoASingleString(message));
 	}
 
+	public static void addInfo(String message, int num) {
+		addInfo(message, String.valueOf(num));
+	}
+
 	public static void addInfo(String... message) {
 		log.info(convertIntoASingleString(message));
 	}

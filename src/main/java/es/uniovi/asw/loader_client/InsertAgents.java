@@ -25,13 +25,11 @@ public class InsertAgents {
 	private List<Agent> agentsToInsert = new ArrayList<Agent>();
 
 	public InsertAgents(List<Agent> content) {
-		System.out.println("Starting inserting agents... ");
+		Logger.addInfo("Starting inserting agents... ");
 		this.agentsToInsert = content;
-		for (Agent a : content) {
-			System.out.println(a);
-		}
+		Logger.addInfo("Number of agents to insert:", this.agentsToInsert.size());
 		this.insert();
-		System.out.println("Finish inserting agents... ");
+		Logger.addInfo("Finish inserting agents... ");
 	}
 
 	private void insert() {

@@ -25,7 +25,7 @@ public class ExcelParser {
 	private List<Agent> content = new ArrayList<Agent>();
 
 	public ExcelParser(String fileFullPath) {
-		Logger.addInfo("Starting parsing...");// + fileFullPath);
+		Logger.addInfo("Starting parsing...");
 		setFileFullPath(fileFullPath);
 		this.parse();
 	}

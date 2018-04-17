@@ -1,12 +1,10 @@
-package types;
+package es.uniovi.asw.loader_client.types;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
-
-import es.uniovi.asw.loader_client.types.Agent;
 
 public class AgentTest {
 
