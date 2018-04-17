@@ -3,6 +3,7 @@ package parser;
 import static java.util.Arrays.asList;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 import static uk.org.lidalia.slf4jtest.LoggingEvent.error;
 import static uk.org.lidalia.slf4jtest.LoggingEvent.info;
 import static uk.org.lidalia.slf4jtest.LoggingEvent.warn;
@@ -97,9 +98,10 @@ public class ExcelParserTest {
 
 	@Test
 	public void testCorrect() {
-		new ExcelParser("src/test/resources/test.xlsx");
+		ExcelParser ex = new ExcelParser("src/test/resources/test.xlsx");
 		assertThat(logger.getLoggingEvents(), is(asList(info("Starting parsing..."), info("Agent added"),
 				info("Agent added"), info("Agent added"), info("Finish parsing..."))));
+		assertTrue(ex.getFileFullPath().equals("src/test/resources/test.xlsx"));
 	}
 
 }
