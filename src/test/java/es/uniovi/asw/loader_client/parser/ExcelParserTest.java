@@ -116,4 +116,15 @@ public class ExcelParserTest {
 		assertTrue(ex.getContent().size() == 3);
 	}
 
+	/**
+	 * Checks if the logInfo(String m, int n) works fine
+	 */
+	@Test
+	public void testLoggerLogInfo() {
+		new ExcelParser("src/test/resources/testEmpty.xlsx");
+		Logger.addInfo("New info", 3);
+		assertThat(logger.getLoggingEvents(),
+				is(asList(info("Starting parsing..."), info("Finish parsing..."), info("New info 3"))));
+	}
+
 }
