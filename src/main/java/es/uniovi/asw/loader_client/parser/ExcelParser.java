@@ -13,11 +13,10 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import es.uniovi.asw.loader_client.types.Agent;
+import logger.Logger;
 import lombok.Getter;
-import lombok.extern.java.Log;
 
-@Log
-public class ExcelParser<T> {
+public class ExcelParser {
 
 	@Getter
 	private String fileFullPath;
@@ -26,7 +25,7 @@ public class ExcelParser<T> {
 	private List<Agent> content = new ArrayList<Agent>();
 
 	public ExcelParser(String fileFullPath) {
-		System.out.println("Starting parsing... " + fileFullPath);
+		Logger.addInfo("Starting parsing...");// + fileFullPath);
 		setFileFullPath(fileFullPath);
 		this.parse();
 	}
@@ -41,12 +40,10 @@ public class ExcelParser<T> {
 			if (extension.equalsIgnoreCase("xlsx")) {
 				this.fileFullPath = fileFullPath;
 			} else {
-				log.info("Trying to read a not valid file with extension: " + extension);
-				System.err.println("That file extension cannot be read.");
+				Logger.addSevere("Trying to read a not valid file with extension:", extension);
 			}
 		} else {
-			log.info("Trying to read a file without extension");
-			System.err.println("Missing file extension.");
+			Logger.addSevere("Trying to read a file without extension");
 		}
 	}
 
@@ -58,71 +55,57 @@ public class ExcelParser<T> {
 
 		try {
 			FileInputStream file = new FileInputStream(fileFullPath);
-
 			wb = new XSSFWorkbook(OPCPackage.open(file));
 			sheet = wb.getSheetAt(0);
-
 			int rows = sheet.getPhysicalNumberOfRows();
-
-			int cols = 5; // CAMBIADO A: name, location, email, id, kind
-
+			int cols = 5; // CAMBIADO A: name, email, id, location, kind
 			for (int r = 1; r < rows; r++) {
 				row = sheet.getRow(r);
-
 				String[] data = parseRow(row, cols);
-
 				Agent currAgent = null;
-
 				if (data != null) {
-
 					if (data[0] == null) {
-						log.warning("Null name on row number " + r);
-					} else if (data[2] == null) {
-						log.warning("Null email on row number " + r);
-					} else if (data[3] == null) {
-						log.warning("Null id on row number " + r);
+						Logger.addWarning("Null name on row number", r);
 					} else if (data[1] == null) {
-						log.warning("Null location on row number " + r);
+						Logger.addWarning("Null email on row number", r);
+					} else if (data[2] == null) {
+						Logger.addWarning("Null id on row number", r);
+					} else if (data[3] == null) {
+						Logger.addWarning("Null location on row number", r);
 					} else if (data[4] == null) {
-						log.warning("Null kind on row number " + r);
+						Logger.addWarning("Null kind on row number", r);
 					} else {
-
 						currAgent = new Agent(data);
-
 						if (content.contains(currAgent)) {
-							log.warning("Duplicated citizen on row number " + r);
+							Logger.addWarning("Duplicated citizen on row number", r);
 						} else {
 							content.add(currAgent);
+							Logger.addInfo("Agent added");
 						}
-
 					}
 				} else {
-					log.warning("Empty row n " + r);
+					Logger.addWarning("Empty row n", r);
 				}
-
 			}
-
 			wb.close();
-		} catch (FileNotFoundException e) {
-			log.warning("No se ha encontrado el archivo solicitado " + e);
-		}
-
-		catch (Exception ioe) {
+		} catch (FileNotFoundException | NullPointerException e) {
+			Logger.addSevere("No se ha encontrado el archivo solicitado");
+		} catch (Exception ioe) {
 			ioe.printStackTrace();
 		}
-
-		System.out.println("Finish parsing... " + fileFullPath);
+		Logger.addInfo("Finish parsing...");
 	}
 
 	private String[] parseRow(XSSFRow row, int cols) throws ParseException {
 		XSSFCell cell;
 		String[] data = new String[cols];
-
 		if (row != null) {
 			for (int c = 0; c < cols; c++) {
 				cell = row.getCell((short) c);
 				if (cell != null && !cell.toString().equals("")) {
 					data[c] = cell.toString();
+				} else {
+					data[c] = null;
 				}
 			}
 			return data;

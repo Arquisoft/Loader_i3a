@@ -18,9 +18,8 @@ import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
 import es.uniovi.asw.loader_client.types.Agent;
-import lombok.extern.java.Log;
+import logger.Logger;
 
-@Log
 public class InsertAgents {
 
 	private List<Agent> agentsToInsert = new ArrayList<Agent>();
@@ -57,16 +56,13 @@ public class InsertAgents {
 						.header("Content-Type", "application/json").body(new JSONObject(agentData)).asJson();
 
 				if (jsonResponse.getStatus() == HttpStatus.SC_CREATED) {
-					log.info("Agent inserted: " + new JSONObject(agentData).toString());
-					System.out.println("Agent inserted: " + new JSONObject(agentData).toString());
+					Logger.addInfo("Agent inserted: " + new JSONObject(agentData).toString());
 				} else {
-					log.warning("Agent NOT inserted: " + new JSONObject(agentData).toString());
-					System.out.println("Agent NOT inserted: " + new JSONObject(agentData).toString());
+					Logger.addWarning("Agent NOT inserted: " + new JSONObject(agentData).toString());
 				}
 
 			} catch (UnirestException e) {
-				log.warning("Error sending request to the agents service " + e.getMessage());
-				System.out.println(e);
+				Logger.addWarning("Error sending request to the agents service " + e.getMessage());
 			}
 		}
 	}

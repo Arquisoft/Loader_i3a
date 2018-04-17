@@ -1,7 +1,6 @@
 package es.uniovi.asw.loader_client;
 
 import es.uniovi.asw.loader_client.parser.ExcelParser;
-import es.uniovi.asw.loader_client.types.Agent;
 
 public class Application {
 
@@ -19,6 +18,6 @@ public class Application {
 			return;
 		}
 
-		new InsertAgents(new ExcelParser<Agent>(args[0]).getContent());
+		new InsertAgents(new ExcelParser(args[0]).getContent());
 	}
 }
