@@ -58,7 +58,8 @@ public class ExcelParser {
 			wb = new XSSFWorkbook(OPCPackage.open(file));
 			sheet = wb.getSheetAt(0);
 			int rows = sheet.getPhysicalNumberOfRows();
-			int cols = 5; // CAMBIADO A: name, email, id, location, kind
+			int cols = 6; // CAMBIADO A: name, email, id, latitude, longitude,
+							// kind
 			for (int r = 1; r < rows; r++) {
 				row = sheet.getRow(r);
 				String[] data = parseRow(row, cols);
