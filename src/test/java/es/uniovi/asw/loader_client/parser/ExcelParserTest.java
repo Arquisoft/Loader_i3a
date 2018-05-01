@@ -138,4 +138,13 @@ public class ExcelParserTest {
 				is(asList(info("Starting parsing..."), info("Finish parsing..."), info("New info 3"))));
 	}
 
+	@Test
+	public void testCorrectLocationFormat() {
+		ExcelParser parser = new ExcelParser("src/test/resources/testEmpty.xlsx");
+		assertFalse(parser.correctFormatLocation("lat", "-10.26"));
+		assertFalse(parser.correctFormatLocation("15.26", "long"));
+		assertFalse(parser.correctFormatLocation("lat", "long"));
+		assertTrue(parser.correctFormatLocation("15.26", "-10.26"));
+	}
+
 }

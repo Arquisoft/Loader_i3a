@@ -110,7 +110,7 @@ public class ExcelParser {
 	 *            it must be a double
 	 * @return true if they are both doubles, false, otherwise
 	 */
-	private boolean correctFormatLocation(String latitude, String longitude) {
+	public boolean correctFormatLocation(String latitude, String longitude) {
 		try {
 			Double.parseDouble(latitude);
 			Double.parseDouble(longitude);
