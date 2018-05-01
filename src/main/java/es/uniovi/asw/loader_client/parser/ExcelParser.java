@@ -35,7 +35,7 @@ public class ExcelParser {
 		String filename = parts[parts.length - 1];
 		String[] fileParts = filename.split("\\.");
 
-		if (fileParts.length == 2) {// .xlsx
+		if (fileParts.length == 2) {// name . xlsx
 			String extension = fileParts[1];
 			if (extension.equalsIgnoreCase("xlsx")) {
 				this.fileFullPath = fileFullPath;
@@ -58,7 +58,8 @@ public class ExcelParser {
 			wb = new XSSFWorkbook(OPCPackage.open(file));
 			sheet = wb.getSheetAt(0);
 			int rows = sheet.getPhysicalNumberOfRows();
-			int cols = 5; // CAMBIADO A: name, email, id, location, kind
+			int cols = 6; // CAMBIADO A: name, email, id, latitude, longitude,
+							// kind
 			for (int r = 1; r < rows; r++) {
 				row = sheet.getRow(r);
 				String[] data = parseRow(row, cols);
@@ -71,8 +72,12 @@ public class ExcelParser {
 					} else if (data[2] == null) {
 						Logger.addWarning("Null id on row number", r);
 					} else if (data[3] == null) {
-						Logger.addWarning("Null location on row number", r);
+						Logger.addWarning("Null latitude on row number", r);
 					} else if (data[4] == null) {
+						Logger.addWarning("Null longitude on row number", r);
+					} else if (data[3] != null && data[4] != null && !correctFormatLocation(data[3], data[4])) {
+						Logger.addWarning("Invalid location format on row number", r);
+					} else if (data[5] == null) {
 						Logger.addWarning("Null kind on row number", r);
 					} else {
 						currAgent = new Agent(data);
@@ -94,6 +99,25 @@ public class ExcelParser {
 			ioe.printStackTrace();
 		}
 		Logger.addInfo("Finish parsing...");
+	}
+
+	/**
+	 * This method checks the validity of the location format
+	 * 
+	 * @param latitude
+	 *            it must be a double
+	 * @param longitude
+	 *            it must be a double
+	 * @return true if they are both doubles, false, otherwise
+	 */
+	public boolean correctFormatLocation(String latitude, String longitude) {
+		try {
+			Double.parseDouble(latitude);
+			Double.parseDouble(longitude);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 
 	private String[] parseRow(XSSFRow row, int cols) throws ParseException {

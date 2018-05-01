@@ -76,8 +76,19 @@ public class ExcelParserTest {
 	@Test
 	public void testNoLocation() {
 		ExcelParser ex = new ExcelParser("src/test/resources/testNoLocation.xlsx");
-		assertThat(logger.getLoggingEvents(), is(
-				asList(info("Starting parsing..."), warn("Null location on row number 1"), info("Finish parsing..."))));
+		assertThat(logger.getLoggingEvents(),
+				is(asList(info("Starting parsing..."), warn("Null latitude on row number 1"),
+						warn("Null longitude on row number 2"), info("Finish parsing..."))));
+		assertTrue(ex.getContent().isEmpty());
+	}
+
+	@Test
+	public void testInvalidLocation() {
+		ExcelParser ex = new ExcelParser("src/test/resources/testInvalidLocation.xlsx");
+		assertThat(logger.getLoggingEvents(),
+				is(asList(info("Starting parsing..."), warn("Invalid location format on row number 1"),
+						warn("Invalid location format on row number 2"),
+						warn("Invalid location format on row number 3"), info("Finish parsing..."))));
 		assertTrue(ex.getContent().isEmpty());
 	}
 
@@ -125,6 +136,16 @@ public class ExcelParserTest {
 		Logger.addInfo("New info", 3);
 		assertThat(logger.getLoggingEvents(),
 				is(asList(info("Starting parsing..."), info("Finish parsing..."), info("New info 3"))));
+	}
+
+	@Test
+	public void testCorrectLocationFormat() {
+		// the path is meaningless, just to create an objet
+		ExcelParser parser = new ExcelParser("src/test/resources/testEmpty.xlsx");
+		assertFalse(parser.correctFormatLocation("lat", "-10.26"));
+		assertFalse(parser.correctFormatLocation("15.26", "long"));
+		assertFalse(parser.correctFormatLocation("lat", "long"));
+		assertTrue(parser.correctFormatLocation("15.26", "-10.26"));
 	}
 
 }
