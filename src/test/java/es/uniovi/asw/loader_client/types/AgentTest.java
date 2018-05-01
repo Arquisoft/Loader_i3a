@@ -18,9 +18,15 @@ public class AgentTest {
 
 		String[] data2 = { "Pepe", "pepe@example.es", "23568974L", "-12.56", "58.26", "2" };
 		Agent a2 = new Agent(data2);
+		assertTrue(a2.toString().equals(
+				"Agent(name=Pepe, location=-12.56, 58.26, email=pepe@example.es, ID=23568974L, password=null, kindCode=2)"));
 		assertFalse(a.equals(a2));
 		assertTrue(a.canEqual(a2));
 		assertFalse(a.hashCode() == a2.hashCode());
+
+		a = a2;
+		assertTrue(a.equals(a2));
+		assertTrue(a.hashCode() == a2.hashCode());
 
 	}
 }
