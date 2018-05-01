@@ -17,7 +17,7 @@ public class Agent {
 		this.name = data[0];
 		this.email = data[1];
 		this.ID = data[2];
-		setLocation(data[3]);// no location
+		setLocation(data[3] + ", " + data[4]);// no location
 		Double k = Double.parseDouble(data[4]);
 		this.kindCode = k.intValue();
 	}

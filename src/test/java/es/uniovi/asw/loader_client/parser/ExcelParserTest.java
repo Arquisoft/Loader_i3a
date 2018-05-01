@@ -76,8 +76,19 @@ public class ExcelParserTest {
 	@Test
 	public void testNoLocation() {
 		ExcelParser ex = new ExcelParser("src/test/resources/testNoLocation.xlsx");
-		assertThat(logger.getLoggingEvents(), is(
-				asList(info("Starting parsing..."), warn("Null location on row number 1"), info("Finish parsing..."))));
+		assertThat(logger.getLoggingEvents(),
+				is(asList(info("Starting parsing..."), warn("Null latitude on row number 1"),
+						warn("Null longitude on row number 2"), info("Finish parsing..."))));
+		assertTrue(ex.getContent().isEmpty());
+	}
+
+	@Test
+	public void testInvalidLocation() {
+		ExcelParser ex = new ExcelParser("src/test/resources/testInvalidLocation.xlsx");
+		assertThat(logger.getLoggingEvents(),
+				is(asList(info("Starting parsing..."), warn("Invalid location format on row number 1"),
+						warn("Invalid location format on row number 2"),
+						warn("Invalid location format on row number 3"), info("Finish parsing..."))));
 		assertTrue(ex.getContent().isEmpty());
 	}
 
