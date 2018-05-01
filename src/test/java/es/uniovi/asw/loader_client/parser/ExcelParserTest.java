@@ -140,6 +140,7 @@ public class ExcelParserTest {
 
 	@Test
 	public void testCorrectLocationFormat() {
+		// the path is meaningless, just to create an objet
 		ExcelParser parser = new ExcelParser("src/test/resources/testEmpty.xlsx");
 		assertFalse(parser.correctFormatLocation("lat", "-10.26"));
 		assertFalse(parser.correctFormatLocation("15.26", "long"));
