@@ -88,7 +88,8 @@ public class ExcelParserTest {
 		assertThat(logger.getLoggingEvents(),
 				is(asList(info("Starting parsing..."), warn("Invalid location format on row number 1"),
 						warn("Invalid location format on row number 2"),
-						warn("Invalid location format on row number 3"), info("Finish parsing..."))));
+						warn("Invalid location format on row number 3"), warn("Null longitude on row number 4"),
+						info("Finish parsing..."))));
 		assertTrue(ex.getContent().isEmpty());
 	}
 
